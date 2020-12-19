@@ -1,7 +1,7 @@
 <?php
 
 DEFINE ('DB_HOST', 'localhost');
-DEFINE ('DB_NAME', 'kursai');
+DEFINE ('DB_NAME', 'sporto_klubas');
 DEFINE ('DB_USER', 'root');
 DEFINE ('DB_PASSWORD', '');
 
