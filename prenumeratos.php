@@ -1,3 +1,11 @@
+<?php
+require_once('./veiksmai/mysql_connect.php');
+$sql = "SELECT * FROM prenumeratos";
+$result = mysqli_query($dbc,$sql);
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,67 +37,35 @@
           </ul>
         </div>
       </div>
+	<?php
+    while($row = mysqli_fetch_assoc($result)) 
+	{	 
+		$pavadinimas=$row['pavadinimas']; 
+		?>
+            <div class="card" style="width: 18rem;">
+			<?php
+			echo "<h5 class=\"card-title\">".$pavadinimas."</h5>";    
+			?>
+			<div class="card-body">
+		<?php
+	    
+		$kaina=$row['kaina']; 
+		$busena = $row['busena'];
+		$aprasymas = $row['aprasymas'];
+
+		    echo $kaina."</td><td>";   
+			echo $busena."</td><td>"; 
+			echo $aprasymas."</td><td>";  
+			echo "</tr>";
+			?>
+			</div>
+            </div>
+		<?php
+      		
+	}
+ ?>
 	  
 	  
-	  <div class="container">
-	  <div>
-     <button type="button"  onClick="MyWindow=window.open('prenumeratossukurimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-danger">Prenumeratos sukurimas</button>
-	  </div>
-      <div class="row">
-	  
-	   <div class="col-sm-6">
-       <div class="w3-container w3-teal">
-			<h1>Prenumerata: GYM+</h1>
-		</div>
-		<div class="w3-container w3-white">
-			<p >Ieina:</p>
-			<p>Neribotas apsilankimas sporto klube</p>
-			<p>Kaina:60$</p>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button11" onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Užsisakyti</button>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button12" onclick=prenumeratosTrinimas() class="btn btn-primary">Ištrinti prenumeratą</button>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button13" onClick="MyWindow=window.open('prenumeratosredagavimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Redaguoti prenumeratą</button>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button14"  onClick="MyWindow=window.open('prenumeratosataskaita.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Prenumeratos ataskaita</button>
-		</div>
-		</div>
-	   
-		 <div class="col-sm-6">
-       <div class="w3-container w3-teal">
-			<h1>Prenumerata: GYM++</h1>
-		</div>
-		<div class="w3-container w3-white">
-			<p >Ieina:</p>
-			<p>Neribotas apsilankimas sporto klube + rankšluostis</p>
-			<p>Kaina:120$</p>
-		</div>
-
-		<div class="w3-container w3-red">
-			<button type="button22" onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Užsisakyti</button>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button22" onclick=prenumeratosTrinimas() class="btn btn-primary">Ištrinti prenumeratą</button>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button23"  onClick="MyWindow=window.open('prenumeratosredagavimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Redaguoti prenumeratą</button>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button24"  onClick="MyWindow=window.open('prenumeratosataskaita.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Prenumeratos ataskaita</button>
-		</div>
-		
-		</div>
-	  </div>
-	  </div>
-	
-
-
-    </div> <!-- /container -->
 <script>
         function uzsakymoPatvirtinimas() {
         alert("uzsakymas pavykes");
