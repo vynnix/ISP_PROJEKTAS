@@ -1,0 +1,3 @@
+<?php
+beleka seni
+?>
