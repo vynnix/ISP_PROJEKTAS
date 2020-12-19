@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +15,7 @@
         <div class="container">
           <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Pagrindinis</a></li>
+            <li class="active"><a href="pagrindinis.php">Pagrindinis</a></li>
             <li><a href="prenumeratos.php">Prenumeratos</a></li>
             <li><a href="paslaugos.php">Paslaugos</a></li>
             <li class="divider-vertical"></li>
@@ -32,15 +29,34 @@
           </ul>
         </div>
       </div>
+	  
 
       <div class="jumbotron text-center">
-        <h1>Sporto sale</h1>
-        <p class="lead">Sveiki atvyke</p>
-        <p><a class="btn btn-large btn-success" href="registracija.php" target="ext">Registracija</a></p>
+        <h1>Jūsų profilis</h1>
+		<div class="w3-container w3-red">
+        <p class="lead">Informacija apie profilį</p>
       </div>
-
-
-    </div> <!-- /container -->
+	  </div>
+	
+	<div class="container">
+       <div>
+			<h1>Jūsų profilis</h1>
+			
+			<p>Vardas: <input type="text" placeholder="Petras"</input></p>
+			<p>Pavarde: <input type="text" placeholder="Petras"</input></p>
+			<p>E. Paštas: <input type="text" placeholder="Petras@email.com"</input></p>
+			<p>Telefonas: <input type="text" placeholder="12555445452"</input></p>
+			<button type="button2" onclick=patvirtinimas() class="btn btn-primary">Redaguoti</button>
+		</div>
+		<script>
+		function patvirtinimas() {
+    if(confirm("Iššsaugoti?")){
+    alert("Pavyko");
+  }}
+        </script>
+	  </div>
+	  
+	
   
 
 </body>

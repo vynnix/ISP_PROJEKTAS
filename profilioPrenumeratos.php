@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +15,7 @@
         <div class="container">
           <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Pagrindinis</a></li>
+            <li class="active"><a href="pagrindinis.php">Pagrindinis</a></li>
             <li><a href="prenumeratos.php">Prenumeratos</a></li>
             <li><a href="paslaugos.php">Paslaugos</a></li>
             <li class="divider-vertical"></li>
@@ -32,15 +29,25 @@
           </ul>
         </div>
       </div>
+	  
 
       <div class="jumbotron text-center">
-        <h1>Sporto sale</h1>
-        <p class="lead">Sveiki atvyke</p>
-        <p><a class="btn btn-large btn-success" href="registracija.php" target="ext">Registracija</a></p>
-      </div>
-
-
-    </div> <!-- /container -->
+        <h1>Prenumeratos</h1>
+	  </div>
+	
+	<div class="container">
+       <div>
+			<h2>Užsakytos prenumeratos</h2>
+			<p> prenumerata 1 <button type="button2" onclick=trynimas() class="btn btn-primary">Atsisakyti</button></p>
+		</div>
+		<script>
+		function trynimas() {
+    alert("Pavyko sėkmingai");
+  }
+        </script>
+	  </div>
+	  
+	
   
 
 </body>

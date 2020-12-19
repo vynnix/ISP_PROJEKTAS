@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +15,13 @@
         <div class="container">
           <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Pagrindinis</a></li>
+            <li><a href="pagrindinis.php">Pagrindinis</a></li>
             <li><a href="prenumeratos.php">Prenumeratos</a></li>
             <li><a href="paslaugos.php">Paslaugos</a></li>
             <li class="divider-vertical"></li>
 			<li><a href="ivykiai.php">Ivykiai</a></li>
             <li><a href="tvarkarastis.php">Tvarkaraštis</a></li>
-            <li><a href="profilis.php">Profilis</a></li>
+            <li class="active"><a href="profilis.php">Profilis</a></li>
 			<li><a href="administratorius.php">Administratorius</a></li>
 			<li><a>Login: <input type="text" placeholder="" size=4</input></li></a>
 			<li><a>Pass: <input type="text" placeholder="" size=4</input></li></a>
@@ -32,15 +29,41 @@
           </ul>
         </div>
       </div>
+	  
 
       <div class="jumbotron text-center">
-        <h1>Sporto sale</h1>
-        <p class="lead">Sveiki atvyke</p>
-        <p><a class="btn btn-large btn-success" href="registracija.php" target="ext">Registracija</a></p>
+        <h1>Jūsų profilis</h1>
+		<div class="w3-container w3-red">
+        <p class="lead">Informacija apie profilį</p>
       </div>
-
-
-    </div> <!-- /container -->
+	  </div>
+	
+	<div class="container">
+       <div>
+			<h1>Jūsų profilis</h1>
+			
+			<p>Vardas: Petras</p>
+			<p>Pavarde: Petras</p>
+			<p>E. Paštas: Petras@email.com</p>
+			<p>Telefonas: 12555445452</p>
+			</br>
+			<a href="pasiekimai.php" type="button2" class="btn btn-primary">Pasiekimai</a>
+			<a href="profilioRedagavimas.php" type="button2" class="btn btn-primary">Redaguoti</a>
+			<button type="button2" onclick=paskyrosTrynimas() class="btn btn-primary">Trinti</button>
+			<a href="pagrindinis.php" type="button2" class="btn btn-primary">Atsijungti</a>
+			<br />
+			<h2>Užsakytos prenumeratos nutraukimas</h2>
+			<a href="profilioPrenumeratos.php" type="button2" class="btn btn-primary">Prenumeratos</a>
+		</div>
+		<script>
+		function paskyrosTrynimas() {
+    if(confirm("Iššsaugoti profilį?")){
+    alert("Pavyko sėkmingai");
+  }}
+        </script>
+	  </div>
+	  
+	
   
 
 </body>

@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,17 +23,15 @@
             <li><a href="tvarkarastis.php">Tvarkaraštis</a></li>
             <li><a href="profilis.php">Profilis</a></li>
 			<li><a href="administratorius.php">Administratorius</a></li>
-			<li><a>Login: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a>Pass: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
+			<li><a href="pagrindinis.php" type="button2" class="btn"><button>Atsijungti</button></a></li>
           </ul>
         </div>
       </div>
 
       <div class="jumbotron text-center">
-        <h1>Sporto sale</h1>
-        <p class="lead">Sveiki atvyke</p>
-        <p><a class="btn btn-large btn-success" href="registracija.php" target="ext">Registracija</a></p>
+        <h1>Sveiki atvykę į pagrindinį prisijungusiems</h1>
+        <p class="lead">Beleka belekur</p>
+        <p><a class="btn btn-large btn-success" href="http://bootply.com/tagged/bootstrap-3" target="ext">Ištrinti puslapį</a></p>
       </div>
 
 

@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +15,7 @@
         <div class="container">
           <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Pagrindinis</a></li>
+            <li class="active"><a href="pagrindinis.php">Pagrindinis</a></li>
             <li><a href="prenumeratos.php">Prenumeratos</a></li>
             <li><a href="paslaugos.php">Paslaugos</a></li>
             <li class="divider-vertical"></li>
@@ -28,19 +25,20 @@
 			<li><a href="administratorius.php">Administratorius</a></li>
 			<li><a>Login: <input type="text" placeholder="" size=4</input></li></a>
 			<li><a>Pass: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
+			<li><a><button>Prisijungti</button></li></a>
           </ul>
         </div>
       </div>
+	  
 
       <div class="jumbotron text-center">
-        <h1>Sporto sale</h1>
-        <p class="lead">Sveiki atvyke</p>
-        <p><a class="btn btn-large btn-success" href="registracija.php" target="ext">Registracija</a></p>
+        <h1>Pasiekimai</h1>
+		<div class="w3-container w3-red">
+        <p class="lead">Informacija apie pasiekimus</p>
       </div>
-
-
-    </div> <!-- /container -->
+	  </div>
+	  
+	
   
 
 </body>
