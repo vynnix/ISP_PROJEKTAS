@@ -18,26 +18,7 @@ $result = mysqli_query($dbc,$sql);
 <title>GYM</title>
 </head>
 <body>
-<div class="container-fixed">
-      
-      <div class="navbar navbar-default">
-        <div class="container">
-          <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
-          <ul class="nav navbar-nav">
-            <li><a href="pagrindinis.php">Pagrindinis</a></li>
-            <li class="active"><a href="prenumeratos.php">Prenumeratos</a></li>
-            <li><a href="paslaugos.php">Paslaugos</a></li>
-            <li class="divider-vertical"></li>
-			<li><a href="ivykiai.php">Ivykiai</a></li>
-            <li><a href="tvarkarastis.php">Tvarkaraštis</a></li>
-            <li><a href="profilis.php">Profilis</a></li>
-			<li><a href="administratorius.php">Administratorius</a></li>
-			<li><a>Login: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a>Pass: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
-          </ul>
-        </div>
-      </div>
+<?php include('navbar.php'); ?>
 	<?php
     while($row = mysqli_fetch_assoc($result)) 
 	{	 
