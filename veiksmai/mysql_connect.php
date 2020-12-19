@@ -1,5 +1,4 @@
 <?php
-
 DEFINE ('DB_HOST', 'freedb.tech');
 DEFINE ('DB_NAME', 'freedbtech_Sportas');
 DEFINE ('DB_USER', 'freedbtech_Sportas');
