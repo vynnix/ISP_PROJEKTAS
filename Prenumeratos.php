@@ -1,3 +1,3 @@
 <?php
-beleka seni
+beleka seni veikia
 ?>
