@@ -1,3 +1,15 @@
+<?php
+
+require_once('./include/mysql_connect.php');
+
+$id = $_GET['id'];
+
+$sql="SELECT * FROM skelbimas WHERE id=$id";
+$results=mysqli_query($dbc,$sql);
+
+$row=mysqli_fetch_assoc($results);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,21 +38,40 @@
        <div class="w3-container w3-teal">
 			<h1>Skelbimo redagavimas</h1>
 		</div>
-		<div class="w3-container w3-red">
-			<button type="button2" onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Įrašyti</button>
+    <div class ="container" style="width: 200px" >
+		<form method='post'>
+		
+			<label for="pavadinimas"> Pavadinimas</label><br>
+		<input name = "pavadinimas" type="text" value="<?php echo $row['pavadinimas'];?>" /><br><br>
+    <label for="turinys"> Turinys</label><br>
+    <textarea class="form-control" rows="4" name='turinys' id="turinys" ><?php echo $row['turinys'];?> </textarea>
+		<button type="submit" name='submit'onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Atnaujinti</button>
+		</form>
 		</div>
 		<script>
         function uzsakymoPatvirtinimas() {
-        alert("Skelbimas redaguotas");
+        alert("Prenumerata redaguota");
         }
         </script>
 		</div>
 	  </div>
 	  </div>
-	
+	   <?php
+     if(isset($_POST['submit'])){
 
 
-    </div> <!-- /container -->
+			   $Pavadinimas = $_POST['pavadinimas'];
+			   $Turinys =$_POST['turinys'];
+
+			  $sql = "UPDATE skelbimas
+			          SET pavadinimas = '".$Pavadinimas."',
+                data = NOW(),
+					  turinys = '".$Turinys."'
+           WHERE id = $id";
+           var_dump($sql);
+           mysqli_query($dbc,$sql);
+    }
+    ?>
   
 
 </body>

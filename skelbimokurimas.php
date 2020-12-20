@@ -64,12 +64,12 @@ require_once('./include/mysql_connect.php');
 
 			if(isset($_POST['skelbimo_sukurimas']))
 			{
-			   $pavadinimas = $_POST['pavadinimas'];
-         $data =$_POST['data'];
+         $pavadinimas = $_POST['pavadinimas'];
+         $data = $_POST['data'];
          $turinys =$_POST['turinys'];
       
-      $sql = "INSERT INTO $lentele (pavadinimas, 'data' ,turinys)
-      VALUES ('$pavadinimas',$data,'$turinys')";
+      $sql = "INSERT INTO $lentele (pavadinimas, data , turinys)
+      VALUES ('$pavadinimas','$data','$turinys')";
       mysqli_query($dbc,$sql);
       echo "<script> window.opener.location.reload();
       window.close();</script>";
