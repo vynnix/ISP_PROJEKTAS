@@ -19,6 +19,9 @@ $result = mysqli_query($dbc,$sql);
 </head>
 <body>
 <?php include('./include/navbar.php'); ?>
+<div>
+       <button type="button"  onClick="MyWindow=window.open('prenumeratosSukurimas.php','MyWindow','width=400,height=600'); return false;"class="btn btn-danger">Prenumeratos sukūrimas</button>
+        </div>
   <div class="container">
   <div class = "row">
 	<?php
