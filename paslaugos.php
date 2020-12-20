@@ -41,12 +41,14 @@ $count = $rowcount['count(*)'];
 
 $countint = intval($count);
 
-$nuolaida = 100-$countint*10;
 
-if($count > 5 )
+
+if($countint > 5 )
 {
-	$count = 5;
+	$countint = 5;
 }
+
+$nuolaida = 100-$countint*10;
 
 ?>
 
@@ -76,7 +78,7 @@ $sql =  "SELECT * FROM paslaugos";
 			$kaina = intval($kainastring);
 			$oldkaina = intval($kainastring);
 			$kaina = $kaina/100*$nuolaida;
-			$nuolaida2 = $count*10; 
+			$nuolaida2 = $countint*10; 
 			echo "Kaina: ". $kaina."<td></td>";
 			if($count>1)
 			{
