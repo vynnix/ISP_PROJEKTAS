@@ -33,6 +33,10 @@
         <input type="text" class="form-control" name='pavadinimas' id="pavadinimas" placeholder="Pavadinimas"> 
         </div>
         <div class = "form-group">
+        <label for="data">Data</label>
+        <input type="datetime-local" class="form-control" name='data' id="data" placeholder="Data"> 
+        </div>
+        <div class = "form-group">
         <label for="Turinys">Turinys</label>
         <textarea class="form-control" name='turinys' id="turinys">  </textarea>
         </div>
@@ -61,11 +65,11 @@ require_once('./include/mysql_connect.php');
 			if(isset($_POST['skelbimo_sukurimas']))
 			{
          $pavadinimas = $_POST['pavadinimas'];
+         $data = $_POST['data'];
          $turinys =$_POST['turinys'];
       
       $sql = "INSERT INTO $lentele (pavadinimas, data , turinys)
-      VALUES ('$pavadinimas',NOW(),'$turinys')";
-      var_dump($sql);
+      VALUES ('$pavadinimas','$data','$turinys')";
       mysqli_query($dbc,$sql);
       echo "<script> window.opener.location.reload();
       window.close();</script>";
