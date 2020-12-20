@@ -12,6 +12,7 @@
 <title>GYM</title>
 </head>
 <body>
+            <?php require_once('./include/session.php');?>
 <div class="container-fixed">
       
       <div class="navbar navbar-default">

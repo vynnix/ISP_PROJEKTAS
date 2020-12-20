@@ -42,16 +42,16 @@ if(isset($_POST['submit'])){
 	$row=mysqli_fetch_array($results);
 	if($affected_rows==1){
 		if ($row['role'] == 'admin'){
-			header("Location: Administratorius.php");
+            $_SESSION["role"] = $row['role'];
+            $_SESSION["id"] = $row['id'];
+			header("Location: pagrindinis.php");
 		} else if ($row['role'] == 'vartotojas'){
-			header("Location: Registruotas_vartotojas.php");
-		} else if ($row['role'] == 'lektorius'){
-			header("Location: Lektorius.php");
+            $_SESSION["role"] = $row['role'];
+            $_SESSION["id"] = $row['id'];
+			header("Location: pagrindinis.php");
 		} else {
 			echo "<div class='klaida'>Klaida prisijungiant</div>";
 		}
-		$_SESSION["vartotojas"] = $_POST['vartotojas'];
-		$_SESSION["id"] = $row['id'];
 	} else {
 		echo "<div class='klaida'>Neteisingas vartotojas arba slaptažodis</div>";
 	}
