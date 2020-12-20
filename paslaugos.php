@@ -20,8 +20,17 @@ require_once('./include/mysql_connect.php');
 
 
 <?php 
-include('./include/navbar.php'); ?>
-<button type="button"  onClick="MyWindow=window.open('paslaugoskurimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-danger">Paslaugos sukūrimas</button>
+include('./include/navbar.php'); 
+if(isset($_SESSION["role"])){
+	if ($_SESSION["role"] == "admin")
+	{
+		echo "<button type=\"button\"  onClick=\"MyWindow=window.open('paslaugoskurimas.php','MyWindow','width=600,height=300'); return false;\"class=\"btn btn-danger\">Paslaugos sukūrimas</button>";
+		echo "<button type=\"button\"  onClick=\"MyWindow=window.open('paslaugustatistika.php','MyWindow','width=600,height=300'); return false;\"class=\"btn btn-danger\">Paslaugos ataskaita</button>";
+	}
+}
+?>
+
+
 <div class= "container">
 <div class="row">
 <?php
@@ -44,11 +53,27 @@ $sql =  "SELECT * FROM paslaugos";
 
 		    echo "Kaina ". $kaina."<td></td>";
 			echo "</br>";
-			echo "<a href=\"veiksmai/trintipaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Trinti paslauga</a>";
+			if(isset($_SESSION["role"])){
+				if ($_SESSION["role"] == "admin")
+			{
+				echo "<a href=\"veiksmai/trintipaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Trinti paslauga</a>";	
+			}
+			}
+			
 			echo "<br>";
-			//echo "<a href=\"veiksmai/redaguotipaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Redaguoti paslauga</a>";
-			echo "<button type=\"button\"  onClick=\"MyWindow=window.open('paslaugosredagavimas.php?id=".$row['id']."','MyWindow','width=600,height=300'); return false;\"class=\"btn btn-danger\">Paslaugos redagavimas</button>";
-			echo "<a href=\"veiksmai/uzsakytiPaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Uzsakyti paslauga</a>";
+			if(isset($_SESSION["role"])){
+				if ($_SESSION["role"] == "admin")
+				{
+					echo "<button type=\"button\"  onClick=\"MyWindow=window.open('paslaugosredagavimas.php?id=".$row['id']."','MyWindow','width=600,height=300'); return false;\"class=\"btn btn-danger\">Paslaugos redagavimas</button>";	
+				}
+			}
+			if(isset($_SESSION["role"])){
+				if ($_SESSION["role"] == "vartotojas")
+				{
+					echo "<a href=\"veiksmai/uzsakytiPaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Uzsakyti paslauga</a>";
+				}
+			}
+			
 			
 			?>
 			</div>
