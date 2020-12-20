@@ -78,17 +78,18 @@ if(isset($_POST['submit'])){
 			
 	require_once('./include/mysql_connect.php');
 		
-		$query = "INSERT INTO profilis (id, vardas, pavarde, registracijos_data, busena, epastas, gimimo_data, lojalumas, lytis, vartotojo_id, telefonas) 
-    VALUES (NULL, '".$vardas."', '".$pavarde."', NOW(), 'Aktyvi', '".$email."', '".$date."', '0', '".$lytis."', '2', '".$telefonas."')";
+		$query = "INSERT INTO profilis (id, vardas, pavarde, registracijos_data, epastas, gimimo_data, lojalumas, lytis, vartotojo_id, telefonas) 
+    VALUES (NULL, '".$vardas."', '".$pavarde."', NOW(), '".$email."', '".$date."', '0', '".$lytis."', '2', '".$telefonas."')";
 
 		$results=mysqli_query($dbc, $query);
     $affected_rows = mysqli_affected_rows($dbc);
 		
 		if($affected_rows==1){
-          header("Location: profilioRedagavimas.php");
-          echo "<script>
+      echo "<script>
                     alert('Profilis sukurtas');
               </script>";
+
+    echo("<script>window.location = 'profilis.php';</script>");
 		} else {
 			echo "<script>
                 alert('Klaida sukuriant profilį');
