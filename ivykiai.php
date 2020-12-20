@@ -53,7 +53,7 @@ $result = mysqli_query($dbc,$sql);
     <?php echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioredagavimas.php?ivykio_id=".$row['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Redaguoti įvykį</button>";?>
     <br><br>
     
-   <?php echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$row['ivykio_id']."\" class=\"btn btn-primary\" onclick = prenumeratosTrinimas()>Trinti įvykį</a>";?>
+   <?php echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$row['ivykio_id']."\" class=\"btn btn-primary\" onclick =\"return confirm('Are tikrai norite ištrinti šitą įvykį?'\");>Trinti įvykį</a>";?>
     
 	</div>
   </div>
@@ -64,15 +64,6 @@ $result = mysqli_query($dbc,$sql);
 </div>
 </div>
 	  
-<script>
-        function uzsakymoPatvirtinimas() {
-        alert("uzsakymas pavykes");
-        }
-		function prenumeratosTrinimas() {
-    if(confirm("Ar tikrai norite istrintiprenumeratą?")){
-    alert("Prenumerata istrinta");
-  }}
-</script>  
 
 
 
