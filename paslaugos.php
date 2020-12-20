@@ -48,6 +48,7 @@ $sql =  "SELECT * FROM paslaugos";
 			echo "<br>";
 			//echo "<a href=\"veiksmai/redaguotipaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Redaguoti paslauga</a>";
 			echo "<button type=\"button\"  onClick=\"MyWindow=window.open('paslaugosredagavimas.php?id=".$row['id']."','MyWindow','width=600,height=300'); return false;\"class=\"btn btn-danger\">Paslaugos redagavimas</button>";
+			echo "<a href=\"veiksmai/uzsakytiPaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Uzsakyti paslauga</a>";
 			
 			?>
 			</div>
