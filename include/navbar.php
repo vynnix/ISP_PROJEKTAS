@@ -18,7 +18,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav text-right">
       <li class="nav-item">
         <a class="nav-link" href="pagrindinis.php">Pagrindinis</a>
       </li>
@@ -47,24 +47,51 @@
       </li>
       
       <?php }} 
-      if (isset($_SESSION["role"])){
-      ?>
-      <form method="post">
-<input class="button-danger" type="submit" name="atsijungimas" value="Atsijungti" />
-</form>
-<?php
-if(isset($_POST['atsijungimas'])){
+      
+
+if(isset($_GET['logout'])){
     // remove all session variables
     session_unset();
 
     // destroy the session
     session_destroy();
 
-    header("Location: pagrindinis.php");
-      }}
+    header("Location: ../pagrindinis.php");
+      }
+
+
 ?>
     </ul>
   </div>
+  <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+        <ul class="navbar-nav text-right">
+        <?php
+
+      if (isset($_SESSION["role"])){
+      ?>
+      <li class="nav-item">
+        <a class="nav-link" href="include/navbar.php?logout=true">Atsijungti (<?php echo "".$_SESSION['role'].""; ?>)</a>
+      </li>
+<?php
+if(isset($_GET['logout'])){
+    // remove all session variables
+    session_unset();
+
+    // destroy the session
+    session_destroy();
+
+    header("Location: ../pagrindinis.php");
+      }}
+
+else {
+  ?>
+  <li class="nav-item">
+        <a class="nav-link" href="prisijungimas.php">Prisijungti</a>
+      </li>
+<?php }
+?>
+        </ul>
+      </div>
 </nav>
 
 
