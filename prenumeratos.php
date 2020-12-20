@@ -1,5 +1,5 @@
 <?php
-require_once('./veiksmai/mysql_connect.php');
+require_once('./include/mysql_connect.php');
 $sql = "SELECT * FROM prenumeratos";
 $result = mysqli_query($dbc,$sql);
 
@@ -18,7 +18,7 @@ $result = mysqli_query($dbc,$sql);
 <title>GYM</title>
 </head>
 <body>
-<?php include('navbar.php'); ?>
+<?php include('./include/navbar.php'); ?>
 	<?php
     while($row = mysqli_fetch_assoc($result)) 
 	{	 

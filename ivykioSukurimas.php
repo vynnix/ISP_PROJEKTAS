@@ -9,8 +9,8 @@
 <title>GYM</title>
 </head>
 <body>
-<?php include('navbar.php');
-  require_once('./veiksmai/mysql_connect.php');
+<?php include('./include/navbar.php');
+  require_once('./include/mysql_connect.php');
 ?>
       
 	  
