@@ -37,7 +37,7 @@
 	  </div>
 	  </div>
 	
-
+    
     <form method='post' action=''> 
    
 <?php
@@ -105,7 +105,7 @@ if(isset($_POST['ivykio_sukurimas'])){
   $tipas_fk = $_POST['tipas_id'];
   $aprasymas = $_POST['aprasymas'];
 
-  $sql = "UPDATE ivykiai SET pavadinimas = '$pavadinimas', data_fk = $data_fk, laikas_fk = $laikas_fk, tipas_fk = $tipas_fk, aprasymas = '$aprasymas' WHERE ivykio_id = 1";
+  $sql = "UPDATE ivykiai SET pavadinimas = '$pavadinimas', data_fk = $data_fk, laikas_fk = $laikas_fk, tipas_fk = $tipas_fk, aprasymas = '$aprasymas' WHERE ivykio_id = ".$_GET['ivykio_id']."  ";
   var_dump($sql);
   mysqli_query($dbc,$sql);
   echo "<script>alert('Įvykis sėkmingai redaguotas!')</script>";

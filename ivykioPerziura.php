@@ -1,3 +1,8 @@
+<?php include('./include/navbar.php');
+  require_once('./include/mysql_connect.php');
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,28 +16,117 @@
 <body>
 <div class="container-fixed">
       
-<?php include('./include/navbar.php');
-  require_once('./include/mysql_connect.php');
-
-?>
 
       
 	  <?php
 
-    $sql = "SELECT ivykiai.pavadinimas as pav, datos.pavadinimas as data, laikai.pavadinimas as laikas, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id WHERE ivykio_id = 1";
-    var_dump($sql);
+    $sql = "SELECT ivykiai.pavadinimas as pav, data_fk, laikas_fk, datos.pavadinimas as data, laikai.pavadinimas as laikas, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id WHERE ivykio_id = ".$_GET['ivykio_id']."";
     $result = mysqli_query($dbc,$sql);
     $row = mysqli_fetch_array($result);
+    $data = $row['data_fk'];
+    $laikas = $row['laikas_fk'];
 
-    echo "Pavadinimas ".$row['pav']."";
-    echo "Data ".$row['data']."";
-    echo "Laikas ".$row['laikas']."";
-    echo "Tipas ".$row['tipas']."";
-    echo "Vietos ".$row['vietos']."";
-    echo "Aprasymas ".$row['aprasymas']."";
+    echo "<center>";
+    echo "<b>Pavadinimas</b><br> ".$row['pav']."";
+    echo "<br><b>Data</b><br> ".$row['data']."";
+    echo "<br><b>Laikas</b><br> ".$row['laikas']."";
+    echo "<br><b>Tipas</b><br> ".$row['tipas']."";
+    echo "<br><b>Vietos</b><br> ".$row['vietos']."";
+    echo "<br><b>Aprasymas</b><br> ".$row['aprasymas']."";
+    
+
+
 
 
 ?>
+<?php
+
+if(isset($_POST['ivykio_vietos']))
+{
+  $sql = "SELECT COUNT(*) FROM ivykiai WHERE ivykio_id = ".$_GET['ivykio_id']."";
+  $result = mysqli_query($dbc,$sql);
+  $row2 = mysqli_fetch_array($result);
+  $reiksme = intval($row['vietos']) - intval($row2['COUNT(*)']);
+  if($reiksme == 0)
+  {
+    echo "<br><b>Likusios laisvos vietos</b><br> Laisvų vietų nėra";
+
+  }
+  else{
+
+    echo "<br><b>Likusios laisvos vietos</b><br> ".$reiksme."";
+  }
+ 
+}
+
+?>
+
+<?php
+
+if(isset($_POST['ivykio_registracija']))
+{
+  $sql = "SELECT COUNT(*) FROM ivykiai WHERE ivykio_id = ".$_GET['ivykio_id']."";
+  $result = mysqli_query($dbc,$sql);
+  $row2 = mysqli_fetch_array($result);
+  $reiksme = intval($row['vietos']) - intval($row2['COUNT(*)']);
+  $profilio_id= $_SESSION["profilio_id"];
+  $ivykio_id = $_GET['ivykio_id'];
+  if($reiksme < 1)
+  {
+    
+    echo "<script>alert('Laivų vietų nėra!')</script>";
+  }
+  else{
+
+    $sql = "SELECT * FROM ivykiu_registracija WHERE ivykio_id = $ivykio_id AND profilio_id = $profilio_id";
+    $result = mysqli_query($dbc,$sql);
+    $row3 = mysqli_fetch_array($result);
+    if(isset($row3['ivykio_id']))
+    {
+      echo "<script>alert('Jau esate prisiregistravę prie šito įvykio!')</script>";
+    }
+    else {
+
+
+
+      $sql = "SELECT ivykiu_registracija.ivykio_id as ivykis, ivykiai.laikas_fk as laikas, ivykiai.data_fk as data FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE ivykiai.laikas_fk = $laikas AND ivykiai.data_fk = $data AND profilio_id = $profilio_id";
+      var_dump($sql);
+      $result = mysqli_query($dbc,$sql);
+      $row4 = mysqli_fetch_array($result);
+
+      if(isset($row4['ivykis']))
+      {
+        echo "<script>alert('Jau esate prisiregistravę prie kito įvykio šiuo laiko momentu!')</script>";
+      }
+      else {
+        $sql = "INSERT INTO ivykiu_registracija (ivykio_id, profilio_id) VALUES ($ivykio_id, $profilio_id)";
+        var_dump($sql);
+        mysqli_query($dbc,$sql);
+      }
+
+  
+    }
+   
+  
+
+   
+  }
+ 
+}
+
+?>
+
+
+<form method='post' action=''> 
+<input type='submit' name='ivykio_vietos' value='Likusios vietos'>
+</form>
+
+<form method='post' action=''> 
+<input type='submit' name='ivykio_registracija' value='Registruotis į įvykį'>
+</form>
+</center>
+
+
 
 	
 

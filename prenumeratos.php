@@ -78,7 +78,18 @@ if(isset($_SESSION["role"])){
 
     if(isset($_SESSION["role"])){
       if ($_SESSION["role"] == "vartotojas"){
-    echo "<a href=\"veiksmai/uzsakytiPrenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\">Uzsakyti prenumerata</a>";}}
+        $queryCheck = "SELECT * FROM prenumeratu_uzsakymai where profilio_id=".$_SESSION['profilio_id']." AND prenumeratos_id=".$row['id'];
+		$show=1;
+		$responseCheck = @mysqli_query($dbc, $queryCheck);
+		$affected_rows = mysqli_affected_rows($dbc);
+		if($affected_rows==1){
+			$show=0;
+		}
+		 
+		 if ($show==1){
+       echo "<a href=\"veiksmai/uzsakytiPrenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\">Uzsakyti prenumerata</a>";
+		 }
+      }}
     ?>
   </div>
   </div>
