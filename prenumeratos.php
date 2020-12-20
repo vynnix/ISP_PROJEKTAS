@@ -44,19 +44,22 @@ if(isset($_SESSION["role"])){
 	<?php
     while($row = mysqli_fetch_assoc($result)) 
 	{	 
-		$pavadinimas=$row['pavadinimas']; 
+    $pavadinimas=$row['pavadinimas']; 
+    $busena = $row['busena'];
 	?>
   <div class="col-sm-4">
     <div class="card border-dark mb-3" style="max-width: 14rem; min-height: 20rem ">
     <div class= "card=header"> <?php
-			      echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";    
+            echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";  
+            if($busena == 1){
+              echo "<center><h4 class=\"card-title\">POPULAR</h5></center>";
+            }  
 		    ?> </div>
     <div class="card-body">
     <p class="card-text">
 		    <?php
 	      	$kaina=$row['kaina']; 
-      		$busena = $row['busena'];
-      		$aprasymas = $row['aprasymas'];
+          $aprasymas = $row['aprasymas'];
 			    echo $aprasymas;  
 		  	?>
     </p>

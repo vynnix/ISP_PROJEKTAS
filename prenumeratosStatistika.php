@@ -18,10 +18,26 @@ require_once('./include/mysql_connect.php');
  
 
 
-
-   $sql="SELECT prenumeratos.pavadinimas,prenumeratos.kaina, count(*) FROM prenumeratu_uzsakymai INNER JOIN prenumeratos ON prenumeratu_uzsakymai.prenumeratos_id=prenumeratos.id GROUP BY prenumeratos.pavadinimas,prenumeratos.kaina";
+        echo'</table>';
+        $max = "SELECT MAX(E) as yep
+        FROM 
+        (SELECT prenumeratos.pavadinimas, count(*) as E
+        FROM prenumeratu_uzsakymai
+            INNER JOIN prenumeratos
+            ON prenumeratu_uzsakymai.prenumeratos_id=prenumeratos.id
+            GROUP BY prenumeratos.pavadinimas) as T
+        ";
+ $maxres=mysqli_query($dbc,$max);
+ while($row2 = mysqli_fetch_assoc($maxres)){
+ echo($row2['yep']);
+ }
+   $sql="SELECT prenumeratos.pavadinimas,prenumeratos.kaina,prenumeratos_id, count(*)
+    FROM prenumeratu_uzsakymai
+     INNER JOIN prenumeratos
+      ON prenumeratu_uzsakymai.prenumeratos_id=prenumeratos.id
+       GROUP BY prenumeratos.pavadinimas,prenumeratos.kaina,prenumeratos.id";
    $results=mysqli_query($dbc,$sql);
-
+   echo '<h1>Prenumeratu ataskaita</h1>';
    echo '<table class="table table-striped table-bordered table-hover">
     <tr>
       <th scope="col">Pavadinimas</th>
@@ -31,14 +47,25 @@ require_once('./include/mysql_connect.php');
     </tr>
 	</thead>';
    while($row = mysqli_fetch_assoc($results)){
-          echo($row['pavadinimas']);
-          echo(" ");
-          echo($row['count(*)']);
-          echo(" ");
-          echo($row['kaina']);
-          echo(" ");
-          echo($row['kaina']*$row['count(*)']);
-   }
+
+            echo strtoupper("<tr>
+            <td>" . $row['pavadinimas'] . "</td>
+            <td>" . $row['count(*)'] . "</td>
+            <td>" . $row['kaina'] . "€</td>
+            <td>" . $row['kaina']*$row['count(*)'] . "€</td>
+            <td>" . $row['prenumeratos_id'] . "</td>
+            </tr>"); 
+            if($row['count(*)'] == 12){
+            $sql3="UPDATE prenumeratos
+            SET prenumeratos.Busena = 1";
+            mysqli_query($dbc,$sql3);
+            echo("DONE");
+            }
+            
+        }
+        
+         
+   
  
 ?>
 </body>
