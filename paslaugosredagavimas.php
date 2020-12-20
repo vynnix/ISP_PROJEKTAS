@@ -1,3 +1,15 @@
+<?php
+
+require_once('./include/mysql_connect.php');
+
+$id = $_GET['id'];
+
+$sql="SELECT * FROM paslaugos WHERE id=$id";
+$results=mysqli_query($dbc,$sql);
+
+$row=mysqli_fetch_assoc($results);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +38,17 @@
        <div class="w3-container w3-teal">
 			<h1>Paslaugos redagavimas</h1>
 		</div>
+    <div class ="container" style="width: 200px" >
+		<form method='post'>
+		
+			<label for="Pavadinimas"> Pavadinimas</label><br>
+		<input name = "Pavadinimas" type="text" value="<?php echo $row['pavadinimas'];?>" /><br><br>
+    <label for="Kaina"> Kaina</label><br>
+    <input name = "Kaina" type="number" value="<?php echo $row['kaina'];?>" /><br><br>
+    <input type='submit' name='submit' value='Patvirtinti'>
+		</form>
+				
+			</div>
 		<div class="w3-container w3-red">
 			<button type="button2" onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Irasyti</button>
 		</div>
@@ -40,7 +63,22 @@
 	
 
 
-    </div> <!-- /container -->
+    </div>
+    <?php
+
+    if(isset($_POST['submit'])){
+
+			   $Kaina = $_POST['Kaina'];
+			   $Pavadinimas =$_POST['Pavadinimas'];
+
+			  $sql = "UPDATE paslaugos
+			          SET kaina = '".$Kaina."',
+					  pavadinimas = '".$Pavadinimas."'
+           WHERE id = $id";
+           var_dump($sql);
+           mysqli_query($dbc,$sql);
+    }
+    ?>
   
 
 </body>

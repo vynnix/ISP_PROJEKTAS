@@ -39,23 +39,88 @@
 	  </div>
 	
 	<div class="container">
-       <div>
-			<h1>Jūsų profilis</h1>
-			
-			<p>Vardas: <input type="text" placeholder="Petras"</input></p>
-			<p>Pavarde: <input type="text" placeholder="Petras"</input></p>
-			<p>E. Paštas: <input type="text" placeholder="Petras@email.com"</input></p>
-			<p>Telefonas: <input type="text" placeholder="12555445452"</input></p>
-			<button type="button2" onclick=patvirtinimas() class="btn btn-primary">Redaguoti</button>
+  <?php
+      require_once('./include/mysql_connect.php');
+
+      $query = "Select * from profilis WHERE vartotojo_id=2";
+
+      $response=mysqli_query($dbc, $query);
+      if($response){  
+    $row=mysqli_fetch_array($response);
+    echo '<form method="post">
+    <p>Vardas: <input name="vardas" type="text" value="'.$row['vardas'].'" /></p>
+    <p>Pavarde: <input name="pavarde" type="text" value="'.$row['pavarde'].'"/></p>
+    <p>E. Paštas: <input name="email" type="email" value="'.$row['epastas'].'"/></p>
+    <p>Gimimo data: '.$row['gimimo_data'].'</p>
+    <p> Lytis: '.$row['lytis'].'</p>
+    <p>Telefonas: <input name="telefonas" type="text" value="'.$row['telefonas'].'"/></p>
+    <p><input class="button2" type="submit" name="submit" onClick=profilioRedagavimas() value="Išsaugoti" /></p>
+    </form>';
+    if(isset($_POST['submit'])){
+	
+      $data_missing = array();
+      
+      if(empty($_POST['vardas'])){
+        $data_missing[] = 'vardas';
+      } else {
+        $vardas= trim($_POST['vardas']);
+      }
+      if(empty($_POST['pavarde'])){
+        $data_missing[] = 'pavarde';
+      } else {
+        $pavarde= trim($_POST['pavarde']);
+      }
+      if(empty($_POST['email'])){
+        $data_missing[] = 'email';
+      } else {
+        $email= trim($_POST['email']);
+      }
+      if(empty($_POST['telefonas'])){
+        $data_missing[] = 'telefonas skaicius';
+      } else {
+        $telefonas= trim($_POST['telefonas']);
+      }
+      
+      if(empty($data_missing)){
+          
+      require_once('./include/mysql_connect.php');
+        
+        $query = "UPDATE profilis SET vardas='".$vardas."', pavarde='".$pavarde."', epastas='".$email."', telefonas='".$telefonas."'
+        WHERE vartotojo_id=2";
+        $results=mysqli_query($dbc, $query);
+        $affected_rows = mysqli_affected_rows($dbc);
+        
+        if($affected_rows==1){
+              header("Location: profilis.php");
+        } else {
+          echo "<script>
+                    alert('Klaida redaguojant profilį');
+              </script>";
+        }
+      } else {
+        echo '<div class="klaida">';
+        echo '<text>Neuzpildyti laukai:</text><br/>';
+        foreach($data_missing as $missing){
+          echo "<text>*$missing</text><br/>";
+        }
+        echo '</div>';
+      }
+    }
+    } else {
+      echo "<script>
+                alert('Nepavyko gauti profilio');
+          </script>";
+          header("Location: profilis.php");
+    }
+  ?>
+  
 		</div>
-		<script>
-		function patvirtinimas() {
-    if(confirm("Iššsaugoti?")){
-    alert("Pavyko");
-  }}
-        </script>
 	  </div>
-	  
+	  <script>
+        function profilioRedagavimas() {
+    if(confirm("Ar tikrai norite išsaugoti profilį?")){
+  }}
+  </script>
 	
   
 
