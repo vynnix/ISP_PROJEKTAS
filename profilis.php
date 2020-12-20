@@ -29,7 +29,6 @@ require_once('./include/mysql_connect.php');
     
   
   $query = "SELECT * FROM profilis WHERE id=".$_SESSION["profilio_id"];
-  echo "$query";
 
   $response = @mysqli_query($dbc, $query);
   $affected_rows = mysqli_affected_rows($dbc);

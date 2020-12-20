@@ -19,10 +19,30 @@ include('./include/navbar.php');
 	
 	<div class="container">
        <div>
-			<h2>Užsakytos prenumeratos</h2>
+			<h1>Užsakytos prenumeratos</h1>
       <?php
       
-      
+require_once('./include/mysql_connect.php');
+      $query = "SELECT * from prenumeratu_uzsakymai WHERE profilio_id=".$_SESSION["profilio_id"];
+      $results=mysqli_query($dbc, $query);
+      if($results){
+          while($row=mysqli_fetch_array($results))
+          {
+            $query2 = "SELECT * from prenumeratos WHERE id=".$row["prenumeratos_id"];
+            $results2=mysqli_query($dbc, $query2);
+            if($results){
+              while($row2=mysqli_fetch_array($results2)){
+                echo "<h2>".$row2['pavadinimas']." kaina ".$row2['kaina'].' € </h2>
+                <form action="veiksmai/prenumeratosNaikinimas.php?id='.$row2['id'].'" method="post">
+		 <input class="btn btn-primary" type="submit" name="Trinti" value="Atsisakyti" onclick="return confirm(`Ar tikrai norit ištrinti?`);" />
+     </form><br />
+     ';
+              }
+            }
+          }
+      } else {
+        echo "<h2>Neturite užsakymų";
+      }
       ?>
       </div>
 		<script>
