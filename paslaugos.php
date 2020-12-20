@@ -31,17 +31,6 @@ include('./include/navbar.php');
 
 $sql =  "SELECT * FROM paslaugos";
 			$result = mysqli_query($dbc,$sql);
-
-			/*while($row = $result->fetch_assoc()) 
-			{
-			
-				echo strtoupper("<tr>
-        <td>" . $row['pavadinimas'] . "</td>
-        <td>" . $row['kaina'] . "</td>
-      </tr>"); 
-            }
-		echo'</table>';*/
-
 		while($row = mysqli_fetch_assoc($result)) 
 	{	 
 		$pavadinimas=$row['pavadinimas']; 
