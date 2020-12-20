@@ -92,7 +92,7 @@
 
 
 ?>
-<textarea name='aprasymas'>Įvykio aprašymas...</textarea>
+<textarea name='aprasymas'><?php echo "".$row_pav['aprasymas'].""; ?></textarea>
 <input type='submit' name='ivykio_sukurimas' value='Patvirtinti',  onclick="return confirm('Ar tikrai norite sukurti šitą įvykį?')">
 </form>
 
