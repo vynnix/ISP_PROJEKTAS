@@ -1,3 +1,19 @@
+<?php
+
+require_once('./include/mysql_connect.php');
+
+				if($_POST !=null)
+			{
+			   $kaina = $_POST['kaina'];
+			   $stazasnuo =$_POST['stazasnuo'];
+					$stazasiki =$_POST['stazasiki'];
+			   $ivykiainuo = $_POST['ivykiainuo'];
+					$ivykiaiiki = $_POST['ivykiaiiki'];
+				$galianuo = $_POST['galianuo'];
+					$galiaiki = $_POST['galiaiki'];
+			}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,24 +27,7 @@
 <body>
 <div class="container-fixed">
       
-     <div class="navbar navbar-default">
-        <div class="container">
-          <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
-          <ul class="nav navbar-nav">
-            <li ><a href="pagrindinis.php">Pagrindinis</a></li>
-            <li><a href="prenumeratos.php">Prenumeratos</a></li>
-            <li class="active"><a href="paslaugos.php">Paslaugos</a></li>
-            <li class="divider-vertical"></li>
-			<li><a href="ivykiai.php">Ivykiai</a></li>
-            <li><a href="tvarkarastis.php">Tvarkaraštis</a></li>
-            <li><a href="profilis.php">Profilis</a></li>
-			<li><a href="administratorius.php">Administratorius</a></li>
-			<li><a>Login: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a>Pass: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
-          </ul>
-        </div>
-      </div>
+<?php include('./include/navbar.php'); ?>
 
 	  
 	  <div class="container">
