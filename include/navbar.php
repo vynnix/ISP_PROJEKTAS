@@ -39,9 +39,6 @@
       <li class="nav-item">
         <a class="nav-link" href="administratorius.php">Administratorius</a>
       </li>
-      <li><a>Login: <input type="text" placeholder="" size=4 /></li></a>
-			<li><a>Pass: <input type="text" placeholder="" size=4 /></li></a>
-			<li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
     </ul>
   </div>
 </nav>
