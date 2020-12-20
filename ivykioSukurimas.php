@@ -35,6 +35,7 @@
 	  </div>
 	
     <form method='post' action=''> 
+    <input name='pavadinimas' type='text' required>
 <?php
 
         $sql = "SELECT data_id, pavadinimas FROM datos";
@@ -48,12 +49,60 @@
 
       }
       echo "</select>";
+
+
+      $sql = "SELECT laikas_id, pavadinimas FROM laikai";
+        $result = mysqli_query($dbc,$sql);
+
+        echo "<select name='laikas_id'>";
+        while ($row = mysqli_fetch_array($result)) {
+
+          echo "<option value='" . $row['laikas_id'] ."'>" . $row['pavadinimas'] ."</option>";
+
+
+      }
+      echo "</select>";
+
+
+      $sql = "SELECT tipas_id, pavadinimas FROM tipai";
+        $result = mysqli_query($dbc,$sql);
+
+        echo "<select name='tipas_id'>";
+        while ($row = mysqli_fetch_array($result)) {
+
+          echo "<option value='" . $row['tipas_id'] ."'>" . $row['pavadinimas'] ."</option>";
+
+
+      }
+      echo "</select>";
+      
+      
       
         
 
 
 ?>
+<textarea name='aprasymas'>Įvykio aprašymas...</textarea>
+<input type='submit' name='ivykio_sukurimas' value='Patvirtinti',  onclick="return confirm('Ar tikrai norite sukurti šitą įvykį?')">
 </form>
+
+<?php
+if(isset($_POST['ivykio_sukurimas'])){
+
+  $pavadinimas = $_POST['pavadinimas'];
+  $data_fk = $_POST['data_id'];
+  $laikas_fk = $_POST['laikas_id'];
+  $tipas_fk = $_POST['tipas_id'];
+  $aprasymas = $_POST['aprasymas'];
+
+  $sql = "INSERT INTO ivykiai (pavadinimas, data_fk, laikas_fk, tipas_fk, aprasymas) VALUES ('$pavadinimas', $data_fk, $laikas_fk, $tipas_fk, '$aprasymas')";
+  mysqli_query($dbc,$sql);
+  echo "<script>alert('Įvykis sėkmingai sukurtas!')</script>";
+
+}
+
+
+?>
     </div> <!-- /container -->
   
 
