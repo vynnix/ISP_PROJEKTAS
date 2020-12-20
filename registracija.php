@@ -24,7 +24,7 @@
 	</div>
  </div>
  <p><input class="button1 perVisaIlgi tarpasApacioje" type="submit" name="submit" value="Registruotis" /></p>
-<a href="index.php">Atgal</a></form>
+<a href="prisijungimas.php">Atgal</a></form>
 
 <?php
 
