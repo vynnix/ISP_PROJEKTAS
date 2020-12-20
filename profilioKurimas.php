@@ -1,3 +1,6 @@
+<?php
+include('./include/navbar.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +13,6 @@
 </head>
 <body>
 <div class="container-fixed">
-      
-      <div class="navbar navbar-default">
-        <div class="container">
-          <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="pagrindinis.php">Pagrindinis</a></li>
-            <li><a href="prenumeratos.php">Prenumeratos</a></li>
-            <li><a href="paslaugos.php">Paslaugos</a></li>
-            <li class="divider-vertical"></li>
-			<li><a href="ivykiai.php">Ivykiai</a></li>
-            <li><a href="tvarkarastis.php">Tvarkaraštis</a></li>
-            <li><a href="profilis.php">Profilis</a></li>
-			<li><a href="administratorius.php">Administratorius</a></li>
-			<li><a>Login: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a>Pass: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
-          </ul>
-        </div>
-      </div>
-	  
-
       <div class="jumbotron text-center">
         <h1>Jūsų profilio kūrimas</h1>
 	  </div>
@@ -79,16 +61,19 @@ if(isset($_POST['submit'])){
 	require_once('./include/mysql_connect.php');
 		
 		$query = "INSERT INTO profilis (id, vardas, pavarde, registracijos_data, epastas, gimimo_data, lojalumas, lytis, vartotojo_id, telefonas) 
-    VALUES (NULL, '".$vardas."', '".$pavarde."', NOW(), '".$email."', '".$date."', '0', '".$lytis."', '2', '".$telefonas."')";
+    VALUES (NULL, '".$vardas."', '".$pavarde."', NOW(), '".$email."', '".$date."', '0', '".$lytis."', '".$_SESSION["id"]."', '".$telefonas."')";
 
 		$results=mysqli_query($dbc, $query);
     $affected_rows = mysqli_affected_rows($dbc);
 		
 		if($affected_rows==1){
+      $query2="SELECT * FROM profilis WHERE vartotojo_id=".$_SESSION["id"];
+      $results2=mysqli_query($dbc, $query2);
+      $row=mysqli_fetch_array($results2);
+      $_SESSION["profilio_id"]=$row['id'];
       echo "<script>
                     alert('Profilis sukurtas');
               </script>";
-
     echo("<script>window.location = 'profilis.php';</script>");
 		} else {
 			echo "<script>

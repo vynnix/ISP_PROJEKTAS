@@ -7,9 +7,10 @@
     <title>GYM</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style type="text/css">
     
 .bg-light-gray {
@@ -124,27 +125,11 @@
     </style>
 </head>
 <body>
-
+<?php include('./include/navbar.php'); 
+require_once('./include/mysql_connect.php'); ?>
     <div class="container-fixed">
       
-        <div class="navbar navbar-default">
-            <div class="container">
-              <a class="navbar-brand" href="pagrindinis.php">BELEKOKS GYMAS</a>
-              <ul class="nav navbar-nav">
-                <li><a href="pagrindinis.php">Pagrindinis</a></li>
-                <li><a href="prenumeratos.php">Prenumeratos</a></li>
-                <li><a href="paslaugos.php">Paslaugos</a></li>
-                <li class="divider-vertical"></li>
-          <li><a href="ivykiai.php">Ivykiai</a></li>
-                <li class="active"><a href="tvarkarastis.php">Tvarkaraštis</a></li>
-                <li><a href="profilis.php">Profilis</a></li>
-          <li><a href="administratorius.php">Administratorius</a></li>
-          <li><a>Login: <input type="text" placeholder="" size=4></input></li></a>
-          <li><a>Pass: <input type="text" placeholder="" size=4></input></li></a>
-          <li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
-              </ul>
-            </div>
-          </div>
+        
 <div class="container">
                 <div class="timetable-img text-center">
                     <img src="img/content/timetable.png" alt="">
@@ -166,67 +151,384 @@
                         <tbody>
                             <tr>
                                 <td class="align-middle">09:00am</td>
-                                <td>
-                                    <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13">Zumba</span>
-                                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                    <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Yoga</span>
-                                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                    <div class="font-size13 text-light-gray">Petras Petraitis</div>
-                                </td>
 
-                                <td>
-                                    <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Jujitsu</span>
-                                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                    <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Zumba</span>
-                                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                    <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Abs treniruotė</span>
-                                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                    <div class="font-size13 text-light-gray">Tankas Tankaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">HIIT</span>
-                                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                    <div class="font-size13 text-light-gray">Lankas Lankaitis</div>
-                                </td>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 1";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 1";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 1";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 1";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 1";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 1";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+
+
+
+
+
                             </tr>
 
                             <tr>
                                 <td class="align-middle">10:00am</td>
-                                <td>
-                                    <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Jujitsu</span>
-                                    <div class="margin-10px-top font-size14">10:00-11:00</div>
-                                    <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
-                                </td>
-                                <td class="bg-light-gray">
 
-                                </td>
-                                <td>
-                                    <span class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Abs treniruotė</span>
-                                    <div class="margin-10px-top font-size14">10:00-11:00</div>
-                                    <div class="font-size13 text-light-gray">Tankas Tankaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Yoga</span>
-                                    <div class="margin-10px-top font-size14">10:00-11:00</div>
-                                    <div class="font-size13 text-light-gray">Petras Petraitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">HIIT</span>
-                                    <div class="margin-10px-top font-size14">10:00-11:00</div>
-                                    <div class="font-size13 text-light-gray">Lankas Lankaitis</div>
-                                </td>
-                                <td class="bg-light-gray">
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 2";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
 
-                                </td>
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 2";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 2";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 2";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+   
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 2";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 2";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+
                             </tr>
 
                             <tr>
@@ -259,64 +561,690 @@
 
                             <tr>
                                 <td class="align-middle">12:00pm</td>
-                                <td class="bg-light-gray">
 
-                                </td>
-                                <td>
-                                    <span class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Abs treniruotė</span>
-                                    <div class="margin-10px-top font-size14">12:00-1:00</div>
-                                    <div class="font-size13 text-light-gray">Tankas Tankaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Zumba</span>
-                                    <div class="margin-10px-top font-size14">12:00-1:00</div>
-                                    <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Jujitsu</span>
-                                    <div class="margin-10px-top font-size14">12:00-1:00</div>
-                                    <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
-                                </td>
-                                <td class="bg-light-gray">
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 3";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
 
-                                </td>
-                                <td>
-                                    <span class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Yoga</span>
-                                    <div class="margin-10px-top font-size14">12:00-1:00</div>
-                                    <div class="font-size13 text-light-gray">Petras Petraitis</div>
-                                </td>
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+
+<?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 3";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                  <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 3";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 3";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 3";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 3";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
                             </tr>
 
                             <tr>
                                 <td class="align-middle">01:00pm</td>
-                                <td>
-                                    <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">HIIT</span>
-                                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                    <div class="font-size13 text-light-gray">Lankas Lankaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Jujitsu</span>
-                                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                    <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
-                                </td>
-                                <td class="bg-light-gray">
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 4";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
 
-                                </td>
-                                <td>
-                                    <span class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">HIIT</span>
-                                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                    <div class="font-size13 text-light-gray">Lankas Lankaitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Yoga</span>
-                                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                    <div class="font-size13 text-light-gray">Petras Petraitis</div>
-                                </td>
-                                <td>
-                                    <span class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16  xs-font-size13">Jujitsu</span>
-                                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                                    <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
-                                </td>
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 4";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 4";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 4";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 4";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 4";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">02:00pm</td>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 5";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 5";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 5";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 5";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 5";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 5";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">03:00pm</td>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 6";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 6";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 6";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 6";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 6";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
+                                <?php
+                                    
+                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 6";
+                                    $result = mysqli_query($dbc, $sql);
+                                    $row = mysqli_fetch_array($result);                                   
+                                    
+                                    if(isset($row['pavadinimas']))
+                                    {
+                                        ?>
+                                        <td>                                  
+
+                                        <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
+                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
+                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        </td>
+                                        
+                                 <?php   }
+
+                                    else 
+
+                                    {
+                                        ?>
+                                         <td class="bg-light-gray">
+
+                                        </td>
+                                    <?php }
+                                    
+                                    ?>
                             </tr>
                         </tbody>
                     </table>

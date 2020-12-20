@@ -20,8 +20,25 @@ $result = mysqli_query($dbc,$sql);
 <body>
 <?php include('./include/navbar.php'); ?>
 <div>
+<?php
+if(isset($_SESSION["role"])){
+  if ($_SESSION["role"] == "admin")
+  { ?>
        <button type="button"  onClick="MyWindow=window.open('prenumeratosSukurimas.php','MyWindow','width=800,height=600'); return false;"class="btn btn-danger">Prenumeratos sukūrimas</button>
         </div>
+        <?php 
+  }}
+  ?>
+  <div>
+<?php
+if(isset($_SESSION["role"])){
+  if ($_SESSION["role"] == "admin")
+  { ?>
+       <button type="button"  onClick="MyWindow=window.open('prenumeratosStatistika.php','MyWindow','width=800,height=600'); return false;"class="btn btn-dark">Prenumeratos statistika</button>
+        </div>
+        <?php 
+  }}
+  ?>
   <div class="container">
   <div class = "row">
 	<?php
@@ -46,8 +63,19 @@ $result = mysqli_query($dbc,$sql);
     <ul class="list-group list-group-flush">
     <li class="list-group-item"><?php echo "Kaina: ".$kaina."€";?></li>
     </ul>
-    <?php echo "<a href=\"veiksmai/trintiprenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = prenumeratosTrinimas()>Trinti prenumerata</a>";
-    echo "<button type=\"button\"  onClick=\"MyWindow=window.open('prenumeratosredagavimas.php?id=".$row['id']."','MyWindow','width=800,height=600'); return false;\"class=\"btn btn-danger\">Redagavimas</button>";?>
+
+    <?php if(isset($_SESSION["role"])){
+  if ($_SESSION["role"] == "admin")
+  { echo "<a href=\"veiksmai/trintiprenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = prenumeratosTrinimas()>Trinti prenumerata</a>";}}
+
+  if(isset($_SESSION["role"])){
+    if ($_SESSION["role"] == "admin"){
+    echo "<button type=\"button\"  onClick=\"MyWindow=window.open('prenumeratosredagavimas.php?id=".$row['id']."','MyWindow','width=800,height=600'); return false;\"class=\"btn btn-danger\">Redagavimas</button>";}}
+    
+    if(isset($_SESSION["role"])){
+      if ($_SESSION["role"] == "vartotojas"){
+    echo "<a href=\"veiksmai/uzsakytiPrenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\">Uzsakyti prenumerata</a>";}}
+    ?>
   </div>
   </div>
   </div>
@@ -62,7 +90,7 @@ $result = mysqli_query($dbc,$sql);
         alert("uzsakymas pavykes");
         }
 		function prenumeratosTrinimas() {
-    if(confirm("Ar tikrai norite istrintiprenumeratą?")){
+    if(confirm("Ar tikrai norite istrinti prenumeratą?")){
     alert("Prenumerata istrinta");
   }}
 </script>  
