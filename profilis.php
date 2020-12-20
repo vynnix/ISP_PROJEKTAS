@@ -48,18 +48,14 @@
 			</br>
 			<a href="pasiekimai.php" type="button2" class="btn btn-primary">Pasiekimai</a>
 			<a href="profilioRedagavimas.php" type="button2" class="btn btn-primary">Redaguoti</a>
-			<button type="button2" onclick=paskyrosTrynimas() class="btn btn-primary">Trinti</button>
+			<form action="veiksmai/paskyrosNaikinimas.php?id=2" method="post">
+		 <input class="button2" type="submit" name="Trinti" value="Trinti" onclick="return confirm('Are you sure you want to submit this form?');" />
+		 </form>
 			<a href="pagrindinis.php" type="button2" class="btn btn-primary">Atsijungti</a>
 			<br />
 			<h2>Užsakytos prenumeratos nutraukimas</h2>
 			<a href="profilioPrenumeratos.php" type="button2" class="btn btn-primary">Prenumeratos</a>
 		</div>
-		<script>
-		function paskyrosTrynimas() {
-    if(confirm("Iššsaugoti profilį?")){
-    alert("Pavyko sėkmingai");
-  }}
-        </script>
 	  </div>
 </body>
 </html>

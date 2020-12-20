@@ -1,3 +1,13 @@
+<?php
+require_once('./include/mysql_connect.php');
+
+$id = $_GET['id'];
+
+$sql="SELECT * FROM prenumeratos WHERE id=$id";
+$results=mysqli_query($dbc,$sql);
+
+$row=mysqli_fetch_assoc($results);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +21,9 @@
 <body>
 <div class="container-fixed">
       
-      <div class="navbar navbar-default">
+<div class="navbar navbar-default">
         <div class="container">
-          <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
+          <div class="navbar-brand" >BELEKOKS GYMAS</div>
         </div>
       </div>
 
@@ -27,7 +37,15 @@
 			<h1>Prenumeratos redagavimas</h1>
 		</div>
 		<div class="w3-container w3-red">
-			<button type="button2" onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Atnaujinti</button>
+    <form method ='post'>
+    <label for="Pavadinimas"> Pavadinimas</label><br>
+		<input name = "pavadinimas" type="text" value="<?php echo $row['pavadinimas'];?>" /><br><br>
+    <label for="Kaina"> Kaina</label><br>
+    <input name = "kaina" type="number" min = "0" value="<?php echo $row['kaina'];?>" /><br><br>
+    <label for="aprasymas"> Aprasymas</label><br>
+    <textarea class="form-control" rows="4" name='aprasymas' id="aprasymas" ><?php echo $row['aprasymas'];?> </textarea>
+			<button type="submit" name='submit'onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Atnaujinti</button>
+    </form>
 		</div>
 		<script>
         function uzsakymoPatvirtinimas() {
@@ -37,7 +55,21 @@
 		</div>
 	  </div>
 	  </div>
-	
+	   <?php
+     if(isset($_POST['submit'])){
+
+      $pavadinimas =$_POST['pavadinimas'];
+      $kaina = $_POST['kaina'];
+      $aprasymas =$_POST['aprasymas'];
+
+     $sql = "UPDATE prenumeratos
+             SET pavadinimas = '".$pavadinimas."',kaina = '".$kaina."',aprasymas = '".$aprasymas."'
+        WHERE id = $id";
+        mysqli_query($dbc,$sql);
+        echo "<script> window.opener.location.reload();
+      window.close();</script>";
+     }
+     ?>
 
 
     </div> <!-- /container -->

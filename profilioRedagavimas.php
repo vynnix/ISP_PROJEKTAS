@@ -87,15 +87,20 @@
         
         $query = "UPDATE profilis SET vardas='".$vardas."', pavarde='".$pavarde."', epastas='".$email."', telefonas='".$telefonas."'
         WHERE vartotojo_id=2";
+        echo ''.$query.'';
         $results=mysqli_query($dbc, $query);
         $affected_rows = mysqli_affected_rows($dbc);
         
-        if($affected_rows==1){
-              header("Location: profilis.php");
+        if($affected_rows>=1){
+          echo "<script>
+          alert('Profilis atnaujintas');
+    </script>";
+echo("<script>window.location = 'profilis.php';</script>");
         } else {
           echo "<script>
-                    alert('Klaida redaguojant profilį');
-              </script>";
+          alert('Profilis atnaujintas');
+    </script>";
+echo("<script>window.location = 'profilis.php';</script>");
         }
       } else {
         echo '<div class="klaida">';
@@ -116,11 +121,6 @@
   
 		</div>
 	  </div>
-	  <script>
-        function profilioRedagavimas() {
-    if(confirm("Ar tikrai norite išsaugoti profilį?")){
-  }}
-  </script>
 	
   
 

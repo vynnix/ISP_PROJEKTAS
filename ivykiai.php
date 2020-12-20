@@ -1,160 +1,80 @@
+<?php
+require_once('./include/mysql_connect.php');
+$sql = "SELECT ivykio_id, ivykiai.pavadinimas as pav, datos.pavadinimas as data, laikai.pavadinimas as laikas, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id";
+$result = mysqli_query($dbc,$sql);
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <title>GYM</title>
 </head>
 <body>
-<div class="container-fixed">
-      
-    <div class="navbar navbar-default">
-        <div class="container">
-          <a class="navbar-brand" href="pagrindinis.php">BELEKOKS GYMAS</a>
-          <ul class="nav navbar-nav">
-            <li><a href="pagrindinis.php">Pagrindinis</a></li>
-            <li><a href="prenumeratos.php">Prenumeratos</a></li>
-            <li><a href="paslaugos.php">Paslaugos</a></li>
-            <li class="divider-vertical"></li>
-      <li class="active"><a href="ivykiai.php">Ivykiai</a></li>
-            <li><a href="tvarkarastis.php">Tvarkaraštis</a></li>
-            <li><a href="profilis.php">Profilis</a></li>
-      <li><a href="administratorius.php">Administratorius</a></li>
-      <li><a>Login: <input type="text" placeholder="" size=4></input></li></a>
-      <li><a>Pass: <input type="text" placeholder="" size=4></input></li></a>
-      <li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
-          </ul>
+<?php include('./include/navbar.php'); ?>
+<div>
+       <button type="button"  onClick="MyWindow=window.open('ivykioSukurimas.php','MyWindow','width=400,height=600'); return false;"class="btn btn-danger">Įvykio sukūrimas</button>
         </div>
-      </div>
-
-      <div class="container">
-        <div>
-       <button type="button"  onClick="MyWindow=window.open('ivykioSukurimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-danger">Įvykio sukūrimas</button>
-        </div>
-	  
-	 
-      <div class="row">
-	  
-	   <div class="col-sm-6">
-       <div class="w3-container w3-teal">
-			<h1>Zumba</h1>
-		</div>
-		<div class="w3-container w3-white">
-			<p >Geriausa šokių pamoka</p>
-			<p>Juozas Juozaitis</p>
-			<p>Kaina 10 pinigu</p>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button" onclick=ivykioPridejimas() class="btn btn-primary">Pridėti į tvarkaraštį</button>
-        </div>
-        <div class="w3-container w3-red">
-			<button type="button2" onclick=paslaugosTrinimas() class="btn btn-primary">Naikinti įvykį</button>
-        </div>
-        <div class="w3-container w3-red">
-			<button type="button13" onClick="MyWindow=window.open('ivykioPerziura.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Peržiūrėti įvykį</button>
-		</div>
-        <div class="w3-container w3-red">
-			<button type="button13" onClick="MyWindow=window.open('ivykioredagavimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Redaguoti įvykį</button>
-		</div>
-		</div>
-	   
-		 <div class="col-sm-6">
-       <div class="w3-container w3-teal">
-			<h1>Yoga</h1>
-		</div>
-		<div class="w3-container w3-white">
-			<p >Jogos trenirtuotė</p>
-			<p>Petras Petraitis</p>
-			<p>Kaina 10 pinigu</p>
-		</div>
-
-		<div class="w3-container w3-red">
-			<button type="button" onclick=ivykioPridejimas() class="btn btn-primary">Pridėti į tvarkaraštį</button>
-        </div>
-        <div class="w3-container w3-red">
-			<button type="button2" onclick=paslaugosTrinimas() class="btn btn-primary">Naikinti įvykį</button>
-        </div>
-        <div class="w3-container w3-red">
-			<button type="button13" onClick="MyWindow=window.open('ivykioPerziura.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Peržiūrėti įvykį</button>
-		</div>
-        <div class="w3-container w3-red">
-			<button type="button13" onClick="MyWindow=window.open('ivykioredagavimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Redaguoti įvykį</button>
-		</div>
-
-		</div>
-      
-        <div class="col-sm-6">
-            <div class="w3-container w3-teal">
-                 <h1>Jujitsu</h1>
-             </div>
-             <div class="w3-container w3-white">
-                 <p >Geriausa jujitsu pamoka</p>
-                 <p>Juozas Juozaitis</p>
-                 <p>Kaina 10 pinigu</p>
-             </div>
-             <div class="w3-container w3-red">
-                <button type="button" onclick=ivykioPridejimas() class="btn btn-primary">Pridėti į tvarkaraštį</button>
-            </div>
-            <div class="w3-container w3-red">
-                <button type="button2" onclick=paslaugosTrinimas() class="btn btn-primary">Naikinti įvykį</button>
-            </div>
-            <div class="w3-container w3-red">
-                <button type="button13" onClick="MyWindow=window.open('ivykioPerziura.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Peržiūrėti įvykį</button>
-            </div>
-            <div class="w3-container w3-red">
-                <button type="button13" onClick="MyWindow=window.open('ivykioredagavimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Redaguoti įvykį</button>
-            </div>
-             </div>
-            
-              <div class="col-sm-6">
-            <div class="w3-container w3-teal">
-                 <h1>Abs treniruotė</h1>
-             </div>
-             <div class="w3-container w3-white">
-                 <p >Geriausia abs treniruotė</p>
-                 <p>Tankas Tankaitis</p>
-                 <p>Kaina 10 pinigu</p>
-             </div>
-     
-             <div class="w3-container w3-red">
-                <button type="button" onclick=ivykioPridejimas() class="btn btn-primary">Pridėti į tvarkaraštį</button>
-            </div>
-            <div class="w3-container w3-red">
-                <button type="button2" onclick=paslaugosTrinimas() class="btn btn-primary">Naikinti įvykį</button>
-            </div>
-            <div class="w3-container w3-red">
-                <button type="button13" onClick="MyWindow=window.open('ivykioPerziura.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Peržiūrėti įvykį</button>
-            </div>
-            <div class="w3-container w3-red">
-                <button type="button13" onClick="MyWindow=window.open('ivykioredagavimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-primary">Redaguoti įvykį</button>
-            </div>
-            <br/>
-            <br/>
-             </div>
+  <div class="container">
+  <div class = "row">
+	<?php
+    while($row = mysqli_fetch_assoc($result)) 
+	{	 
+		$pavadinimas=$row['pav']; 
+	?>
+  <div class="col-sm-4">
+    <div class="card border-dark mb-3" style="max-width: 18rem; max-height: 30rem">
+    <div class= "card=header"> <?php
+			      echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";    
+		    ?> </div>
+    <div class="card-body">
+    <p class="card-text">
+		    <?php
+                $data = $row['data'];
+                $laikas = $row['laikas'];
+                $tipas = $row['tipas'];
+                $aprasymas = $row['aprasymas'];
+			    
+		  	?>
+    </p>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><?php echo "data: ".$data."";?></li>
+    <li class="list-group-item"><?php echo "laikas: ".$laikas."";?></li>
+    <li class="list-group-item"><?php echo "tipas: ".$tipas."";?></li>
+    <li class="list-group-item"><?php echo "aprasymas: ".$aprasymas."";?></li>
+    </ul>
+    <?php echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioredagavimas.php?ivykio_id=".$row['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Redaguoti įvykį</button>";?>
+    <br><br>
     
-    </div>
-      
-      
-      
+   <?php echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$row['ivykio_id']."\" class=\"btn btn-primary\" onclick = prenumeratosTrinimas()>Trinti įvykį</a>";?>
     
-    </div>
-	
-
-
-    </div> <!-- /container -->
-  
-	<script>
-        function ivykioPridejimas() {
-        alert("Įvykis pridėtas");
-        MyWindow=window.open('ivykioPerziura.php','MyWindow','width=600,height=300'); return false;
+	</div>
+  </div>
+  </div>
+	<?php
+	}
+ ?>
+</div>
+</div>
+	  
+<script>
+        function uzsakymoPatvirtinimas() {
+        alert("uzsakymas pavykes");
         }
-        function paslaugosTrinimas() {
-  if(confirm("Ar tikrai norite istrinti pasirinkta skelbima?")){
-    alert("skelbimas istrintas");
+		function prenumeratosTrinimas() {
+    if(confirm("Ar tikrai norite istrintiprenumeratą?")){
+    alert("Prenumerata istrinta");
   }}
-        </script>
+</script>  
+
+
+
 </body>
 </html>

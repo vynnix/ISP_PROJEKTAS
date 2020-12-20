@@ -20,7 +20,7 @@ $result = mysqli_query($dbc,$sql);
 <body>
 <?php include('./include/navbar.php'); ?>
 <div>
-       <button type="button"  onClick="MyWindow=window.open('prenumeratosSukurimas.php','MyWindow','width=400,height=600'); return false;"class="btn btn-danger">Prenumeratos sukūrimas</button>
+       <button type="button"  onClick="MyWindow=window.open('prenumeratosSukurimas.php','MyWindow','width=800,height=600'); return false;"class="btn btn-danger">Prenumeratos sukūrimas</button>
         </div>
   <div class="container">
   <div class = "row">
@@ -30,7 +30,7 @@ $result = mysqli_query($dbc,$sql);
 		$pavadinimas=$row['pavadinimas']; 
 	?>
   <div class="col-sm-4">
-    <div class="card border-dark mb-3" style="max-width: 18rem; max-height: 18rem">
+    <div class="card border-dark mb-3" style="max-width: 14rem; min-height: 20rem ">
     <div class= "card=header"> <?php
 			      echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";    
 		    ?> </div>
@@ -46,11 +46,9 @@ $result = mysqli_query($dbc,$sql);
     <ul class="list-group list-group-flush">
     <li class="list-group-item"><?php echo "Kaina: ".$kaina."€";?></li>
     </ul>
-    <a href="#" class="btn btn-primary">Redaguoti</a>
-    
-    
-    <?php echo "<a href=\"veiksmai/trintiprenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = prenumeratosTrinimas()>Trinti prenumerata</a>";?>
-	</div>
+    <?php echo "<a href=\"veiksmai/trintiprenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = prenumeratosTrinimas()>Trinti prenumerata</a>";
+    echo "<button type=\"button\"  onClick=\"MyWindow=window.open('prenumeratosredagavimas.php?id=".$row['id']."','MyWindow','width=800,height=600'); return false;\"class=\"btn btn-danger\">Redagavimas</button>";?>
+  </div>
   </div>
   </div>
 	<?php
