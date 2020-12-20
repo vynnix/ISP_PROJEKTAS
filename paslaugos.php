@@ -44,7 +44,7 @@ $sql =  "SELECT * FROM paslaugos";
 
 		    echo "Kaina ". $kaina."<td></td>";
 			echo "</br>";
-			echo "<a href=\"veiksmai/trintipaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Go somewhere</a>";
+			echo "<a href=\"veiksmai/trintipaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Trinti paslauga</a>";
 			?>
 			</div>
             </div>

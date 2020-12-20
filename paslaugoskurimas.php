@@ -59,6 +59,7 @@ require_once('./include/mysql_connect.php');
       $sql = "INSERT INTO $lentele (kaina,pavadinimas)
       VALUES ($kaina, '$pavadinimas')";
       mysqli_query($dbc,$sql);
+      echo "<script> window.opener.location.reload(); window.close();</script>";
       }
-
+ 
 ?>
