@@ -67,10 +67,13 @@ if(isset($_POST['submit'])){
     $affected_rows = mysqli_affected_rows($dbc);
 		
 		if($affected_rows==1){
+      $query2="SELECT * FROM profilis WHERE vartotojo_id=".$_SESSION["id"];
+      $results2=mysqli_query($dbc, $query2);
+      $row=mysqli_fetch_array($results2);
+      $_SESSION["profilio_id"]=$row['id'];
       echo "<script>
                     alert('Profilis sukurtas');
               </script>";
-
     echo("<script>window.location = 'profilis.php';</script>");
 		} else {
 			echo "<script>
