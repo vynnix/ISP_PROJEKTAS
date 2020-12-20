@@ -66,7 +66,7 @@ if(isset($_SESSION["role"])){
     <ul class="list-group list-group-flush">
     <li class="list-group-item"><?php echo "Kaina: ".$kaina."€";?></li>
     </ul>
-
+    
     <?php if(isset($_SESSION["role"])){
   if ($_SESSION["role"] == "admin")
   { echo "<a href=\"veiksmai/trintiprenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = prenumeratosTrinimas()>Trinti prenumerata</a>";}}
@@ -75,6 +75,7 @@ if(isset($_SESSION["role"])){
     if ($_SESSION["role"] == "admin"){
     echo "<button type=\"button\"  onClick=\"MyWindow=window.open('prenumeratosredagavimas.php?id=".$row['id']."','MyWindow','width=800,height=600'); return false;\"class=\"btn btn-danger\">Redagavimas</button>";}}
     
+
     if(isset($_SESSION["role"])){
       if ($_SESSION["role"] == "vartotojas"){
     echo "<a href=\"veiksmai/uzsakytiPrenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\">Uzsakyti prenumerata</a>";}}
