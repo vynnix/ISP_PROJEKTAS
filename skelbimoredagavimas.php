@@ -50,7 +50,7 @@ $row=mysqli_fetch_assoc($results);
 		</div>
 		<script>
         function uzsakymoPatvirtinimas() {
-        alert("Prenumerata redaguota");
+        alert("Skelbimas redaguotas");
         }
         </script>
 		</div>
@@ -68,8 +68,9 @@ $row=mysqli_fetch_assoc($results);
                 data = NOW(),
 					  turinys = '".$Turinys."'
            WHERE id = $id";
-           var_dump($sql);
            mysqli_query($dbc,$sql);
+           echo "<script> window.opener.location.reload();
+      window.close();</script>";
     }
     ?>
   

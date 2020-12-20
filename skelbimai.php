@@ -1,6 +1,6 @@
 <?php
 require_once('./include/mysql_connect.php');
-$sql = "SELECT * FROM paskyros";
+$sql = "SELECT * FROM skelbimas";
 $result = mysqli_query($dbc,$sql);
 
 
@@ -20,12 +20,21 @@ $result = mysqli_query($dbc,$sql);
 <body>
 <?php include('./include/navbar.php'); ?>
 <div>
+<?php
+if(isset($_SESSION["role"])){
+  if ($_SESSION["role"] == "admin")
+  { ?>
+       <button type="button"  onClick="MyWindow=window.open('skelbimokurimas.php','MyWindow','width=800,height=600'); return false;"class="btn btn-danger">Skelbimo sukūrimas</button>
+        </div>
+        <?php 
+  }}
+  ?>
   <div class="container">
   <div class = "row">
 	<?php
     while($row = mysqli_fetch_assoc($result)) 
 	{	 
-		$pavadinimas=$row['vartotojas']; 
+		$pavadinimas=$row['pavadinimas']; 
 	?>
   <div class="col-sm-4">
     <div class="card border-dark mb-3" style="max-width: 14rem; min-height: 20rem ">
@@ -35,11 +44,12 @@ $result = mysqli_query($dbc,$sql);
     <div class="card-body">
     <p class="card-text">
 		    <?php
-	      	$vartotojas=$row['vartotojas']; 	
-      		$role = $row['role'];
-				echo $vartotojas;
+	      	$pavadinimas=$row['pavadinimas']; 	
+      		$data = $row['data'];
+      		$turinys = $row['turinys'];
+				echo $data;
 				echo "<br></br>";
-				echo $role;
+				echo $turinys;
 		  	?>
     </p>
     <ul class="list-group list-group-flush">
@@ -47,7 +57,11 @@ $result = mysqli_query($dbc,$sql);
 
     <?php if(isset($_SESSION["role"])){
   if ($_SESSION["role"] == "admin")
-  { echo "<a href=\"veiksmai/klientosalinimas.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = klientosalinimas()>Pašalinti klientą</a>";}}
+  { echo "<a href=\"veiksmai/skelbimotrynimas.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = skelbimoTrinimas()>Trinti prenumerata</a>";}}
+
+  if(isset($_SESSION["role"])){
+    if ($_SESSION["role"] == "admin"){
+    echo "<button type=\"button\"  onClick=\"MyWindow=window.open('skelbimoredagavimas.php?id=".$row['id']."','MyWindow','width=800,height=600'); return false;\"class=\"btn btn-danger\">Redagavimas</button>";}}
     ?>
   </div>
   </div>
@@ -59,9 +73,12 @@ $result = mysqli_query($dbc,$sql);
 </div>
 	  
 <script>
-		function klientosalinimas() {
+        function uzsakymoPatvirtinimas() {
+        alert("uzsakymas pavykes");
+        }
+		function skelbimoTrinimas() {
     if(confirm("Ar tikrai norite ištrinti skelbimą?")){
-    alert("klientas ištrintas");
+    alert("Skelbimas ištrintas");
   }}
 </script>  
 
