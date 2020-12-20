@@ -43,8 +43,10 @@ $countint = intval($count);
 
 $nuolaida = 100-$countint*10;
 
-
-
+if($count > 5 )
+{
+	$count = 5;
+}
 
 ?>
 
@@ -74,10 +76,14 @@ $sql =  "SELECT * FROM paslaugos";
 			$kaina = intval($kainastring);
 			$oldkaina = intval($kainastring);
 			$kaina = $kaina/100*$nuolaida;
-			echo "Kaina ". $kaina."<td></td>";
-			if(count>1)
+			$nuolaida2 = $count*10; 
+			echo "Kaina: ". $kaina."<td></td>";
+			if($count>1)
 			{
-				
+				echo "</br>";
+				echo "Sena kaina: ". $oldkaina."<td></td>";
+				echo "</br>";
+				echo "Nuolaida: ". $nuolaida2."%<td></td>";
 			}
 			echo "</br>";
 			if(isset($_SESSION["role"])){
