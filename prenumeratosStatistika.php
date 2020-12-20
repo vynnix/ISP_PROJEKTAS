@@ -1,12 +1,7 @@
 <?php
 require_once('./include/mysql_connect.php');
 
-$id = $_GET['id'];
 
-$sql="SELECT * FROM prenumeratos ";
-$results=mysqli_query($dbc,$sql);
-
-$row=mysqli_fetch_assoc($results);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,21 +15,31 @@ $row=mysqli_fetch_assoc($results);
 </head>
 <body>
 <?php
- echo(" Pavadinimas: ");
- echo($row['pavadinimas'] );
  
 
- $query= "SELECT * FROM prenumeratu_uzsakymai ";
-    $results=mysqli_query($dbc, $query);
-    $affected_rows = mysqli_affected_rows($dbc);
-    $row2=mysqli_fetch_array($results);
-    echo( " Užsakymų kiekis: ");
-    echo($affected_rows );
-    echo(" Kaina: ");
-    echo($row['kaina']);
-    echo("€ Pelnas: ");
-    echo( $affected_rows * $row['kaina'] );
-    echo("€");
+
+
+   $sql="SELECT prenumeratos.pavadinimas,prenumeratos.kaina, count(*) FROM prenumeratu_uzsakymai INNER JOIN prenumeratos ON prenumeratu_uzsakymai.prenumeratos_id=prenumeratos.id GROUP BY prenumeratos.pavadinimas,prenumeratos.kaina";
+   $results=mysqli_query($dbc,$sql);
+
+   echo '<table class="table table-striped table-bordered table-hover">
+    <tr>
+      <th scope="col">Pavadinimas</th>
+      <th scope="col">Uzsakymu skaicius</th>
+      <th scope="col">Kaina</th>
+      <th scope="col">Pelnas</th>
+    </tr>
+	</thead>';
+   while($row = mysqli_fetch_assoc($results)){
+          echo($row['pavadinimas']);
+          echo(" ");
+          echo($row['count(*)']);
+          echo(" ");
+          echo($row['kaina']);
+          echo(" ");
+          echo($row['kaina']*$row['count(*)']);
+   }
+ 
 ?>
 </body>
 </html>
