@@ -77,6 +77,10 @@ $row=mysqli_fetch_assoc($results);
            WHERE id = $id";
            var_dump($sql);
            mysqli_query($dbc,$sql);
+           echo "<script>
+          alert('Paslauga redaguota');
+    </script>";
+echo("<script>window.opener.location.reload(); window.close();</script>");
     }
     ?>
   

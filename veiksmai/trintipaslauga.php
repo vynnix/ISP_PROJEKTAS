@@ -7,5 +7,9 @@ $sql = "DELETE FROM paslaugos WHERE id = $id";
 
 mysqli_query($dbc,$sql);
 
-header("Location: ../paslaugos.php");
+echo "<script>
+          alert('Paslauga istrinta');
+    </script>";
+echo("<script>window.location = '../paslaugos.php';</script>");
+
 ?>
