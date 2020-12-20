@@ -10,7 +10,6 @@
 </head>
 <body>
 <div class="container-fixed">
-      
       <div class="navbar navbar-default">
         <div class="container">
           <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
@@ -62,9 +61,5 @@
   }}
         </script>
 	  </div>
-	  
-	
-  
-
 </body>
 </html>
