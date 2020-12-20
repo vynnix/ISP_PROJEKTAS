@@ -6,31 +6,34 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>GYM</title>
+<title>GYM </title>
 </head>
 <body>
 <div class="container-fixed">
       
-      <div class="navbar navbar-default">
-        <div class="container">
-          <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
-        </div>
-      </div>
+<?php include('./include/navbar.php');
+  require_once('./include/mysql_connect.php');
+
+?>
 
       
-	  
-	  <div class="container">
-      <div class="row">
-	  
-	   <div class="col-sm-6">
-       <div class="w3-container w3-teal">
-      <h1>Įvykis: *******</h1>
-      <br/>
-      <p>Laisvų vietų: 2/30</p>
-		</div>
-		</div>
-	  </div>
-	  </div>
+	  <?php
+
+    $sql = "SELECT ivykiai.pavadinimas as pav, datos.pavadinimas as data, laikai.pavadinimas as laikas, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id WHERE ivykio_id = 1";
+    var_dump($sql);
+    $result = mysqli_query($dbc,$sql);
+    $row = mysqli_fetch_array($result);
+
+    echo "Pavadinimas ".$row['pav']."";
+    echo "Data ".$row['data']."";
+    echo "Laikas ".$row['laikas']."";
+    echo "Tipas ".$row['tipas']."";
+    echo "Vietos ".$row['vietos']."";
+    echo "Aprasymas ".$row['aprasymas']."";
+
+
+?>
+
 	
 
 
