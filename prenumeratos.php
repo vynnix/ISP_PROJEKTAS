@@ -19,34 +19,41 @@ $result = mysqli_query($dbc,$sql);
 </head>
 <body>
 <?php include('./include/navbar.php'); ?>
+  <div class="container">
+  <div class = "row">
 	<?php
     while($row = mysqli_fetch_assoc($result)) 
 	{	 
 		$pavadinimas=$row['pavadinimas']; 
-		?>
-            <div class="card border-dark" style="width: 18rem;">
-			<?php
-			echo "<h5 class=\"card-title\">$pavadinimas</h5>";    
-			?>
-			<div class="card-body">
-		<?php
-	    
-		$kaina=$row['kaina']; 
-		$busena = $row['busena'];
-		$aprasymas = $row['aprasymas'];
-
-		    echo $kaina."</td><td>";   
-			echo $busena."</td><td>"; 
-			echo $aprasymas."</td><td>";  
-			echo "</tr>";
-			?>
-			</div>
-            </div>
-		<?php
-      		
+	?>
+  <div class="col-sm-4">
+    <div class="card border-dark" style="width: 18rem;">
+    <div class="card-body">
+		    <?php
+			      echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";    
+		    ?>
+    <p class="card-text">
+		    <?php
+	      	$kaina=$row['kaina']; 
+      		$busena = $row['busena'];
+      		$aprasymas = $row['aprasymas'];
+			    echo $aprasymas;  
+		  	?>
+    </p>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><?php echo "Kaina: ".$kaina."€";?></li>
+    </ul>
+    <a href="#" class="btn btn-primary">Redaguoti</a>
+    
+    <a href="#" class="btn btn-primary" onclick = prenumeratosTrinimas() >Ištrinti</a>
+	</div>
+  </div>
+  </div>
+	<?php
 	}
  ?>
-	  
+</div>
+</div>
 	  
 <script>
         function uzsakymoPatvirtinimas() {
