@@ -29,6 +29,16 @@ if(isset($_SESSION["role"])){
         <?php 
   }}
   ?>
+  <div>
+<?php
+if(isset($_SESSION["role"])){
+  if ($_SESSION["role"] == "admin")
+  { ?>
+       <button type="button"  onClick="MyWindow=window.open('prenumeratosStatistika.php','MyWindow','width=800,height=600'); return false;"class="btn btn-danger">Prenumeratos statistika</button>
+        </div>
+        <?php 
+  }}
+  ?>
   <div class="container">
   <div class = "row">
 	<?php
@@ -61,9 +71,6 @@ if(isset($_SESSION["role"])){
   if(isset($_SESSION["role"])){
     if ($_SESSION["role"] == "admin"){
     echo "<button type=\"button\"  onClick=\"MyWindow=window.open('prenumeratosredagavimas.php?id=".$row['id']."','MyWindow','width=800,height=600'); return false;\"class=\"btn btn-danger\">Redagavimas</button>";}}
-    if(isset($_SESSION["role"])){
-      if ($_SESSION["role"] == "admin"){
-      echo "<button type=\"button\"  onClick=\"MyWindow=window.open('prenumeratosStatistika.php?id=".$row['id']."','MyWindow','width=800,height=600'); return false;\"class=\"btn btn-dark\">Statistika</button>";}}
     
     if(isset($_SESSION["role"])){
       if ($_SESSION["role"] == "vartotojas"){

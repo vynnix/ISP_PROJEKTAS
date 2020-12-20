@@ -3,7 +3,7 @@ require_once('./include/mysql_connect.php');
 
 $id = $_GET['id'];
 
-$sql="SELECT * FROM prenumeratos WHERE id=$id";
+$sql="SELECT * FROM prenumeratos ";
 $results=mysqli_query($dbc,$sql);
 
 $row=mysqli_fetch_assoc($results);
@@ -20,13 +20,21 @@ $row=mysqli_fetch_assoc($results);
 </head>
 <body>
 <?php
- echo($row['pavadinimas']);
+ echo(" Pavadinimas: ");
+ echo($row['pavadinimas'] );
+ 
 
- $query= "SELECT * FROM prenumeratu_uzsakymai where prenumeratos_id = '" .$id."'";
+ $query= "SELECT * FROM prenumeratu_uzsakymai ";
     $results=mysqli_query($dbc, $query);
     $affected_rows = mysqli_affected_rows($dbc);
-    $row=mysqli_fetch_array($results);
-    echo($affected_rows)
+    $row2=mysqli_fetch_array($results);
+    echo( " Užsakymų kiekis: ");
+    echo($affected_rows );
+    echo(" Kaina: ");
+    echo($row['kaina']);
+    echo("€ Pelnas: ");
+    echo( $affected_rows * $row['kaina'] );
+    echo("€");
 ?>
 </body>
 </html>
