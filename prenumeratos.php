@@ -34,7 +34,7 @@ if(isset($_SESSION["role"])){
 if(isset($_SESSION["role"])){
   if ($_SESSION["role"] == "admin")
   { ?>
-       <button type="button"  onClick="MyWindow=window.open('prenumeratosStatistika.php','MyWindow','width=800,height=600'); return false;"class="btn btn-danger">Prenumeratos statistika</button>
+       <button type="button"  onClick="MyWindow=window.open('prenumeratosStatistika.php','MyWindow','width=800,height=600'); return false;"class="btn btn-dark">Prenumeratos statistika</button>
         </div>
         <?php 
   }}
