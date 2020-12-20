@@ -22,6 +22,14 @@ require_once('./include/mysql_connect.php');
    $sql="SELECT prenumeratos.pavadinimas,prenumeratos.kaina, count(*) FROM prenumeratu_uzsakymai INNER JOIN prenumeratos ON prenumeratu_uzsakymai.prenumeratos_id=prenumeratos.id GROUP BY prenumeratos.pavadinimas,prenumeratos.kaina";
    $results=mysqli_query($dbc,$sql);
 
+   echo '<table class="table table-striped table-bordered table-hover">
+    <tr>
+      <th scope="col">Pavadinimas</th>
+      <th scope="col">Uzsakymu skaicius</th>
+      <th scope="col">Kaina</th>
+      <th scope="col">Pelnas</th>
+    </tr>
+	</thead>';
    while($row = mysqli_fetch_assoc($results)){
           echo($row['pavadinimas']);
           echo(" ");
