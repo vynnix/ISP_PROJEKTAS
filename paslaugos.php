@@ -28,7 +28,27 @@ if(isset($_SESSION["role"])){
 		echo "<button type=\"button\"  onClick=\"MyWindow=window.open('paslaugustatistika.php','MyWindow','width=600,height=300'); return false;\"class=\"btn btn-danger\">Paslaugos ataskaita</button>";
 	}
 }
+
+$sqlcount = "SELECT count(*)
+FROM paslaugu_uzsakymai
+WHERE profilio_id = ".$_SESSION["profilio_id"];
+
+$countsql = mysqli_query($dbc,$sqlcount);
+
+$rowcount = mysqli_fetch_assoc($countsql);
+
+$count = $rowcount['count(*)'];
+
+$countint = intval($count);
+
+$nuolaida = 100-$countint*10;
+
+
+
+
 ?>
+
+
 
 
 <div class= "container">
@@ -49,9 +69,16 @@ $sql =  "SELECT * FROM paslaugos";
 			<div class="card-body">
 		<?php
 	    
-		$kaina=$row['kaina']; 
+		$kainastring=$row['kaina']; 
 
-		    echo "Kaina ". $kaina."<td></td>";
+			$kaina = intval($kainastring);
+			$oldkaina = intval($kainastring);
+			$kaina = $kaina/100*$nuolaida;
+			echo "Kaina ". $kaina."<td></td>";
+			if(count>1)
+			{
+				
+			}
 			echo "</br>";
 			if(isset($_SESSION["role"])){
 				if ($_SESSION["role"] == "admin")

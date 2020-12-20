@@ -7,13 +7,15 @@ require_once('./include/mysql_connect.php');
 ?>
 
 <html>
+
 <body>
+<h1>Paslaugu ataskaita</h1>
 <?php
 
 echo '<table class="table table-striped table-bordered table-hover">
 				<thead style="background-color:#FFFF00">
     <tr>
-      <th scope="col">Pavadinimas</th>
+      <th scope="col">Paslaugos pavadinimas</th>
       <th scope="col">Uzsakymu skaicius</th>
     </tr>
 	</thead>';
@@ -23,7 +25,7 @@ while($row = $result->fetch_assoc())
 			
 				echo strtoupper("<tr>
         <td>" . $row['pavadinimas'] . "</td>
-        <td>" . $row['count(*)'] . "</td>
+        <td style=\"text-align:right\">" . $row['count(*)'] . "</td>
       </tr>"); 
             }
         echo'</table>';
