@@ -85,10 +85,10 @@ if(isset($_POST['submit'])){
     $affected_rows = mysqli_affected_rows($dbc);
 		
 		if($affected_rows==1){
-			echo "<script>
-                alert('Profilis sukurtas');
-          </script>";
           header("Location: profilioRedagavimas.php");
+          echo "<script>
+                    alert('Profilis sukurtas');
+              </script>";
 		} else {
 			echo "<script>
                 alert('Klaida sukuriant profilį');
@@ -120,12 +120,6 @@ if(isset($_POST['submit'])){
       <p><input class="button2" type="submit" name="submit" value="Sukurti" /></p>
       </form>
     </div>
-		<script>
-		function patvirtinimas() {
-    if(confirm("Iššsaugoti?")){
-    alert("Pavyko");
-  }}
-        </script>
 	  </div>
 </body>
 </html>

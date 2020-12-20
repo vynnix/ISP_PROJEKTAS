@@ -26,21 +26,21 @@
 	  
 	   <div class="col-sm-6">
        <div class="w3-container w3-teal">
-			<h1>Prenumeratos kurimas</h1>
+			<h1>Skelbimo kūrimas</h1>
       <form method='post'>
         <div class = "form-group">
         <label for="pavadinimas">Pavadinimas</label>
         <input type="text" class="form-control" name='pavadinimas' id="pavadinimas" placeholder="Pavadinimas"> 
         </div>
         <div class = "form-group">
-        <label for="kaina">Kaina</label>
-        <input type="number" class="form-control" name='kaina' id="kaina" placeholder="Kaina" min = 0> 
+        <label for="data">Data</label>
+        <input type="datetime-local" class="form-control" name='data' id="data" placeholder="Data"> 
         </div>
         <div class = "form-group">
-        <label for="aprasymas">Aprasymas</label>
-        <textarea class="form-control" name='aprasymas' id="aprasymas">  </textarea>
+        <label for="Turinys">Turinys</label>
+        <textarea class="form-control" name='turinys' id="turinys">  </textarea>
         </div>
-        <input type='submit' onclick = uzsakymoPatvirtinimas() class="btn btn-primary" name='prenumeratos_sukurimas' value='Iterpti'>
+        <input type='submit' onclick = uzsakymoPatvirtinimas() class="btn btn-primary" name='skelbimo_sukurimas' value='Sukurti'>
 			
 		</form>
 		</div>
@@ -58,18 +58,18 @@
 
 <?php
 
-$lentele = "prenumeratos";
+$lentele = "skelbimas";
 
 require_once('./include/mysql_connect.php');
 
-			if(isset($_POST['prenumeratos_sukurimas']))
+			if(isset($_POST['skelbimo_sukurimas']))
 			{
 			   $pavadinimas = $_POST['pavadinimas'];
-         $kaina =$_POST['kaina'];
-         $aprasymas =$_POST['aprasymas'];
+         $data =$_POST['data'];
+         $turinys =$_POST['turinys'];
       
-      $sql = "INSERT INTO $lentele (pavadinimas,kaina,aprasymas)
-      VALUES ('$pavadinimas',$kaina,'$aprasymas')";
+      $sql = "INSERT INTO $lentele (pavadinimas, 'data' ,turinys)
+      VALUES ('$pavadinimas',$data,'$turinys')";
       mysqli_query($dbc,$sql);
       echo "<script> window.opener.location.reload();
       window.close();</script>";
@@ -78,6 +78,6 @@ require_once('./include/mysql_connect.php');
 ?>
 <script>
         function uzsakymoPatvirtinimas() {
-        alert("uzsakymas pavykes");
+        alert("skelbimas sukurtas");
         }
 </script>

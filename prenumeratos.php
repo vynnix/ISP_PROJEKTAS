@@ -30,11 +30,11 @@ $result = mysqli_query($dbc,$sql);
 		$pavadinimas=$row['pavadinimas']; 
 	?>
   <div class="col-sm-4">
-    <div class="card border-dark" style="width: 18rem;">
-    <div class="card-body">
-		    <?php
+    <div class="card border-dark mb-3" style="max-width: 18rem; max-height: 18rem">
+    <div class= "card=header"> <?php
 			      echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";    
-		    ?>
+		    ?> </div>
+    <div class="card-body">
     <p class="card-text">
 		    <?php
 	      	$kaina=$row['kaina']; 
@@ -48,7 +48,8 @@ $result = mysqli_query($dbc,$sql);
     </ul>
     <a href="#" class="btn btn-primary">Redaguoti</a>
     
-    <a href="#" class="btn btn-primary" onclick = prenumeratosTrinimas() >Ištrinti</a>
+    
+    <?php echo "<a href=\"veiksmai/trintiprenumerata.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = prenumeratosTrinimas()>Trinti prenumerata</a>";?>
 	</div>
   </div>
   </div>
