@@ -38,7 +38,7 @@
         </div>
         <div class = "form-group">
         <label for="aprasymas">Aprasymas</label>
-        <textarea class="form-control" name='aprasimas' id="aprasimas">  </textarea>
+        <textarea class="form-control" name='aprasymas' id="aprasymas">  </textarea>
         </div>
         <input type='submit' onclick = uzsakymoPatvirtinimas() class="btn btn-primary" name='prenumeratos_sukurimas' value='Iterpti'>
 			
