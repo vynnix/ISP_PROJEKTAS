@@ -2,17 +2,6 @@
 
 require_once('./include/mysql_connect.php');
 
-				if($_POST !=null)
-			{
-			   $kaina = $_POST['kaina'];
-			   $stazasnuo =$_POST['stazasnuo'];
-					$stazasiki =$_POST['stazasiki'];
-			   $ivykiainuo = $_POST['ivykiainuo'];
-					$ivykiaiiki = $_POST['ivykiaiiki'];
-				$galianuo = $_POST['galianuo'];
-					$galiaiki = $_POST['galiaiki'];
-			}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,18 +13,27 @@ require_once('./include/mysql_connect.php');
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <title>GYM</title>
+
 </head>
 <body>
-<?php 
-include('./include/navbar.php'); 
 
+
+
+<?php 
+include('./include/navbar.php'); ?>
+<button type="button"  onClick="MyWindow=window.open('paslaugoskurimas.php','MyWindow','width=600,height=300'); return false;"class="btn btn-danger">Paslaugos sukūrimas</button>
+<div class= "container">
+<div class="row">
+<?php
 $sql =  "SELECT * FROM paslaugos";
 			$result = mysqli_query($dbc,$sql);
+			
 		while($row = mysqli_fetch_assoc($result)) 
 	{	 
 		$pavadinimas=$row['pavadinimas']; 
 		?>
-            <div class="card border-dark" style="width: 18rem;">
+			
+            <div class="card bg-light mb-3" style="width: 18rem;">
 			<?php
 			echo "<h5 class=\"card-title\">$pavadinimas</h5>";    
 			?>
@@ -44,17 +42,23 @@ $sql =  "SELECT * FROM paslaugos";
 	    
 		$kaina=$row['kaina']; 
 
-		    echo "Kaina ". $kaina."</td><td>";
-			echo "</tr>";
+		    echo "Kaina ". $kaina."<td></td>";
+			echo "</br>";
+			echo "<a href=\"veiksmai/trintipaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Go somewhere</a>";
 			?>
 			</div>
             </div>
+			
+
 		<?php
       		
 	}
+	
 
 			$dbc->close();
 ?>
+</div>
+			</div>
 
 	  
 	 
