@@ -29,7 +29,6 @@ require_once('./include/mysql_connect.php');
     
   
   $query = "SELECT * FROM profilis WHERE id=".$_SESSION["profilio_id"];
-  echo "$query";
 
   $response = @mysqli_query($dbc, $query);
   $affected_rows = mysqli_affected_rows($dbc);
@@ -45,8 +44,8 @@ require_once('./include/mysql_connect.php');
 			<a href="profilioRedagavimas.php" type="button2" class="btn btn-primary">Redaguoti</a>
 			<a href="pagrindinis.php" type="button2" class="btn btn-primary">Atsijungti</a>
       <br /><br />
-      <form action="veiksmai/paskyrosNaikinimas.php?id=2" method="post">
-		 <input class="btn btn-primary" type="submit" name="Trinti" value="Trinti" onclick="return confirm(`Are you sure you want to submit this form?`);" />
+      <form action="veiksmai/paskyrosNaikinimas.php?id='.$_SESSION["profilio_id"].'" method="post">
+		 <input class="btn btn-primary" type="submit" name="Trinti" value="Trinti" onclick="return confirm(`Ar tikrai norit ištrinti?`);" />
 		 </form>
 			<br />
 			<h2>Užsakytos prenumeratos nutraukimas</h2>
