@@ -40,7 +40,7 @@
         <label for="Turinys">Turinys</label>
         <textarea class="form-control" name='turinys' id="turinys">  </textarea>
         </div>
-        <input type='submit' onclick = uzsakymoPatvirtinimas() class="btn btn-primary" name='prenumeratos_sukurimas' value='Iterpti'>
+        <input type='submit' onclick = uzsakymoPatvirtinimas() class="btn btn-primary" name='skelbimo_sukurimas' value='Sukurti'>
 			
 		</form>
 		</div>
