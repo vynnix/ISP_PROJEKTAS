@@ -29,8 +29,7 @@ require_once('./include/mysql_connect.php');
         ";
  $maxres=mysqli_query($dbc,$max);
  while($row2 = mysqli_fetch_assoc($maxres)){
- echo($row2['yep']);
- }
+ $belekoksmaxas=$row2['yep']; }
    $sql="SELECT prenumeratos.pavadinimas,prenumeratos.kaina,prenumeratos_id, count(*)
     FROM prenumeratu_uzsakymai
      INNER JOIN prenumeratos
@@ -53,14 +52,21 @@ require_once('./include/mysql_connect.php');
             <td>" . $row['count(*)'] . "</td>
             <td>" . $row['kaina'] . "€</td>
             <td>" . $row['kaina']*$row['count(*)'] . "€</td>
-            <td>" . $row['prenumeratos_id'] . "</td>
             </tr>"); 
-            if($row['count(*)'] == 12){
+            if(intval($row['count(*)']) == intval($belekoksmaxas)){
             $sql3="UPDATE prenumeratos
-            SET prenumeratos.Busena = 1";
+            SET prenumeratos.Busena = 1 
+            WHERE prenumeratos.id = " . $row['prenumeratos_id'];
             mysqli_query($dbc,$sql3);
             echo("DONE");
             }
+            if(intval($row['count(*)']) != intval($belekoksmaxas)){
+                $sql3="UPDATE prenumeratos
+                SET prenumeratos.Busena = 0 
+                WHERE prenumeratos.id = " . $row['prenumeratos_id'];
+                mysqli_query($dbc,$sql3);
+                echo("DONE");
+                }
             
         }
         

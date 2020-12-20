@@ -87,6 +87,45 @@ if(isset($_SESSION["role"])){
  ?>
 </div>
 </div>
+
+
+<?php
+    $max = "SELECT MAX(E) as yep
+    FROM 
+    (SELECT prenumeratos.pavadinimas, count(*) as E
+    FROM prenumeratu_uzsakymai
+        INNER JOIN prenumeratos
+        ON prenumeratu_uzsakymai.prenumeratos_id=prenumeratos.id
+        GROUP BY prenumeratos.pavadinimas) as T
+    ";
+$maxres=mysqli_query($dbc,$max);
+while($row2 = mysqli_fetch_assoc($maxres)){
+$belekoksmaxas=$row2['yep']; }
+  $sql="SELECT prenumeratos.pavadinimas,prenumeratos.kaina,prenumeratos_id, count(*)
+   FROM prenumeratu_uzsakymai
+    INNER JOIN prenumeratos
+     ON prenumeratu_uzsakymai.prenumeratos_id=prenumeratos.id
+      GROUP BY prenumeratos.pavadinimas,prenumeratos.kaina,prenumeratos.id";
+  $results=mysqli_query($dbc,$sql);
+
+  while($row = mysqli_fetch_assoc($results)){
+
+    if(intval($row['count(*)']) == intval($belekoksmaxas)){
+    $sql3="UPDATE prenumeratos
+    SET prenumeratos.Busena = 1 
+    WHERE prenumeratos.id = " . $row['prenumeratos_id'];
+    mysqli_query($dbc,$sql3);
+
+    }
+    if(intval($row['count(*)']) != intval($belekoksmaxas)){
+        $sql3="UPDATE prenumeratos
+        SET prenumeratos.Busena = 0 
+        WHERE prenumeratos.id = " . $row['prenumeratos_id'];
+        mysqli_query($dbc,$sql3);
+        }
+    
+}
+?>
 	  
 <script>
         function uzsakymoPatvirtinimas() {
