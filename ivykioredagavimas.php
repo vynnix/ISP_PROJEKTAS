@@ -43,17 +43,16 @@
 <?php
 
 
-        $sql = "SELECT ivykiai.pavadinimas as pav, datos.pavadinimas as data, laikai.pavadinimas as laikas, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id WHERE ivykio_id = 1";
+        $sql = "SELECT ivykiai.pavadinimas as pav, data_fk, datos.pavadinimas as data, laikas_fk, laikai.pavadinimas as laikas, tipas_fk, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id WHERE ivykio_id = 1";
         $result = mysqli_query($dbc, $sql);
         $row_pav = mysqli_fetch_array($result);
-        
         echo "<input name='pavadinimas' type='text' value = '".$row_pav['pav']."' required>";
 
 
         $sql = "SELECT data_id, pavadinimas FROM datos";
         $result = mysqli_query($dbc,$sql);
         echo "<select name='data_id'>";
-        echo "<option value='' disabled selected>".$row_pav['data']."</option>";
+        echo "<option value=".$row_pav['data_fk']." disabled selected>".$row_pav['data']."</option>";
         while ($row = mysqli_fetch_array($result)) {
           echo "<option value='" . $row['data_id'] ."'>" . $row['pavadinimas'] ."</option>";
 
@@ -65,7 +64,7 @@
       $sql = "SELECT laikas_id, pavadinimas FROM laikai";
         $result = mysqli_query($dbc,$sql);
         echo "<select name='laikas_id'>";
-        echo "<option value='' disabled selected>".$row_pav['laikas']."</option>";
+        echo "<option value=".$row_pav['laikas_fk']." disabled selected>".$row_pav['laikas']."</option>";
         while ($row = mysqli_fetch_array($result)) {
 
           echo "<option value='" . $row['laikas_id'] ."'>" . $row['pavadinimas'] ."</option>";
@@ -78,7 +77,7 @@
       $sql = "SELECT tipas_id, pavadinimas FROM tipai";
         $result = mysqli_query($dbc,$sql);
         echo "<select name='tipas_id'>";
-        echo "<option value='' disabled selected>".$row_pav['tipas']."</option>";
+        echo "<option value=".$row_pav['tipas_fk']." disabled selected>".$row_pav['tipas']."</option>";
         while ($row = mysqli_fetch_array($result)) {
 
           echo "<option value='" . $row['tipas_id'] ."'>" . $row['pavadinimas'] ."</option>";
@@ -93,7 +92,7 @@
 
 
 ?>
-<textarea name='aprasymas'>Įvykio aprašymas...</textarea>
+<textarea name='aprasymas'><?php echo "".$row_pav['aprasymas'].""; ?></textarea>
 <input type='submit' name='ivykio_sukurimas' value='Patvirtinti',  onclick="return confirm('Ar tikrai norite sukurti šitą įvykį?')">
 </form>
 
