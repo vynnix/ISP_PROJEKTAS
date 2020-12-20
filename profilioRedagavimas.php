@@ -1,3 +1,6 @@
+<?php
+include('./include/navbar.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +13,6 @@
 </head>
 <body>
 <div class="container-fixed">
-      
-      <div class="navbar navbar-default">
-        <div class="container">
-          <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="pagrindinis.php">Pagrindinis</a></li>
-            <li><a href="prenumeratos.php">Prenumeratos</a></li>
-            <li><a href="paslaugos.php">Paslaugos</a></li>
-            <li class="divider-vertical"></li>
-			<li><a href="ivykiai.php">Ivykiai</a></li>
-            <li><a href="tvarkarastis.php">Tvarkaraštis</a></li>
-            <li><a href="profilis.php">Profilis</a></li>
-			<li><a href="administratorius.php">Administratorius</a></li>
-			<li><a>Login: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a>Pass: <input type="text" placeholder="" size=4</input></li></a>
-			<li><a href="pagrindinisPrisijunges.php" type="button2" class="btn"><button>Prisijungti</button></a></li>
-          </ul>
-        </div>
-      </div>
-	  
-
       <div class="jumbotron text-center">
         <h1>Jūsų profilis</h1>
 		<div class="w3-container w3-red">
@@ -42,7 +24,7 @@
   <?php
       require_once('./include/mysql_connect.php');
 
-      $query = "Select * from profilis WHERE vartotojo_id=2";
+      $query = "Select * from profilis WHERE vartotojo_id=".$_SESSION["id"];
 
       $response=mysqli_query($dbc, $query);
       if($response){  
@@ -86,7 +68,7 @@
       require_once('./include/mysql_connect.php');
         
         $query = "UPDATE profilis SET vardas='".$vardas."', pavarde='".$pavarde."', epastas='".$email."', telefonas='".$telefonas."'
-        WHERE vartotojo_id=2";
+        WHERE vartotojo_id=".$_SESSION["id"];
         echo ''.$query.'';
         $results=mysqli_query($dbc, $query);
         $affected_rows = mysqli_affected_rows($dbc);
