@@ -3,7 +3,7 @@
 session_start();
 
 $prenumeratos_id = $_GET['id'];
-$vartotojo_id= $_SESSION["id"];
+$vartotojo_id= $_SESSION["profilio_id"];
 
 	require_once('../include/mysql_connect.php');
 
