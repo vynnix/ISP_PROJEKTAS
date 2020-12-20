@@ -61,7 +61,7 @@ if(isset($_POST['submit'])){
 	require_once('./include/mysql_connect.php');
 		
 		$query = "INSERT INTO profilis (id, vardas, pavarde, registracijos_data, epastas, gimimo_data, lojalumas, lytis, vartotojo_id, telefonas) 
-    VALUES (NULL, '".$vardas."', '".$pavarde."', NOW(), '".$email."', '".$date."', '0', '".$lytis."', '2', '".$telefonas."')";
+    VALUES (NULL, '".$vardas."', '".$pavarde."', NOW(), '".$email."', '".$date."', '0', '".$lytis."', '".$_SESSION["id"]."', '".$telefonas."')";
 
 		$results=mysqli_query($dbc, $query);
     $affected_rows = mysqli_affected_rows($dbc);

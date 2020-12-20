@@ -24,7 +24,7 @@ include('./include/navbar.php');
   <?php
       require_once('./include/mysql_connect.php');
 
-      $query = "Select * from profilis WHERE vartotojo_id=2";
+      $query = "Select * from profilis WHERE vartotojo_id=".$_SESSION["id"];
 
       $response=mysqli_query($dbc, $query);
       if($response){  
@@ -68,7 +68,7 @@ include('./include/navbar.php');
       require_once('./include/mysql_connect.php');
         
         $query = "UPDATE profilis SET vardas='".$vardas."', pavarde='".$pavarde."', epastas='".$email."', telefonas='".$telefonas."'
-        WHERE vartotojo_id=2";
+        WHERE vartotojo_id=".$_SESSION["id"];
         echo ''.$query.'';
         $results=mysqli_query($dbc, $query);
         $affected_rows = mysqli_affected_rows($dbc);

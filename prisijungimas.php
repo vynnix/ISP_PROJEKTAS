@@ -20,12 +20,11 @@
 	<text>Slaptazodis: <br /></text>
 	</div>
 	<div class="tarpasApacioje">
-	<input class="perVisaIlgi" type="text" name="slaptazodis" placeholder="Įveskite slaptazodį" />
+	<input class="perVisaIlgi" type="password" name="slaptazodis" placeholder="Įveskite slaptazodį" />
 	</div>
  </div>
  <p><input class="button1 perVisaIlgi tarpasApacioje" type="submit" name="submit" value="Prisijungti" /></p>
 <a href="Registracija.php">Registracija</a><br />
-<a href="Neregistruotas_vartotojas.php">Neregistruotas vartotojas</a>
 </form>
 
  <?php
@@ -41,6 +40,15 @@ if(isset($_POST['submit'])){
 	$affected_rows = mysqli_affected_rows($dbc);
 	$row=mysqli_fetch_array($results);
 	if($affected_rows==1){
+        $query2="SELECT * FROM profilis WHERE vartotojo_id=".$row['id'];
+        $results2=mysqli_query($dbc, $query2);
+        $affected_rows2 = mysqli_affected_rows($dbc);
+        echo "$query2";
+        if($affected_rows2==1){
+            $row2=mysqli_fetch_array($results2);
+            $_SESSION["profilio_id"]=$row2["id"];
+        } else {$_SESSION["profilio_id"]="Nera";}
+
 		if ($row['role'] == 'admin'){
             $_SESSION["role"] = $row['role'];
             $_SESSION["id"] = $row['id'];
