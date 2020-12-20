@@ -9,8 +9,10 @@ $profilio_id= $_SESSION["profilio_id"];
 
 $query = "INSERT INTO paslaugu_uzsakymai (id, profilio_id, paslaugos_id) VALUES (NULL, $profilio_id, $paslaugos_id)";
 $response = @mysqli_query($dbc, $query);
-echo "$query ";
 if($response){
-	header("Location: ../paslaugos.php");
+	echo "<script>
+          alert('Paslauga uzsakyta');
+    </script>";
+echo("<script>window.location = '../paslaugos.php';</script>");
 }
 ?>

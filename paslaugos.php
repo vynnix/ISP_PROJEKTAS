@@ -28,7 +28,38 @@ if(isset($_SESSION["role"])){
 		echo "<button type=\"button\"  onClick=\"MyWindow=window.open('paslaugustatistika.php','MyWindow','width=600,height=300'); return false;\"class=\"btn btn-danger\">Paslaugos ataskaita</button>";
 	}
 }
+
+$sqlcount = "SELECT count(*)
+FROM paslaugu_uzsakymai
+WHERE profilio_id = ".$_SESSION["profilio_id"];
+
+if(isset($_SESSION["role"])){
+	if ($_SESSION["role"] == "vartotojas")
+	{
+		$countsql = mysqli_query($dbc,$sqlcount);
+
+$rowcount = mysqli_fetch_assoc($countsql);
+
+$count = $rowcount['count(*)'];
+
+$countint = intval($count);
+
+
+
+if($countint > 5 )
+{
+	$countint = 5;
+}
+
+$nuolaida = 100-$countint*10;
+	}
+}
+
+
+
 ?>
+
+
 
 
 <div class= "container">
@@ -49,9 +80,33 @@ $sql =  "SELECT * FROM paslaugos";
 			<div class="card-body">
 		<?php
 	    
-		$kaina=$row['kaina']; 
+		$kainastring=$row['kaina']; 
 
-		    echo "Kaina ". $kaina."<td></td>";
+			$kaina = intval($kainastring);
+
+			if(isset($_SESSION["role"])){
+				if ($_SESSION["role"] == "vartotojas")
+				{
+					$oldkaina = intval($kainastring);
+					$kaina = $kaina/100*$nuolaida;
+					$nuolaida2 = $countint*10; 
+				}
+			}
+			
+			echo "Kaina: ". $kaina."<td></td>";
+			if(isset($_SESSION["role"])){
+				if ($_SESSION["role"] == "vartotojas")
+				{
+					if($count>1)
+			{
+				echo "</br>";
+				echo "Sena kaina: ". $oldkaina."<td></td>";
+				echo "</br>";
+				echo "Nuolaida: ". $nuolaida2."%<td></td>";
+			}
+				}
+			}
+			
 			echo "</br>";
 			if(isset($_SESSION["role"])){
 				if ($_SESSION["role"] == "admin")
@@ -73,26 +128,15 @@ $sql =  "SELECT * FROM paslaugos";
 					echo "<a href=\"veiksmai/uzsakytiPaslauga.php?id=".$row['id']."\" class=\"btn btn-primary\">Uzsakyti paslauga</a>";
 				}
 			}
-			
-			
 			?>
 			</div>
             </div>
-			
-
 		<?php
       		
 	}
-	
-
 			$dbc->close();
 ?>
 </div>
 			</div>
-
-	  
-	 
-  
-
 </body>
 </html>
