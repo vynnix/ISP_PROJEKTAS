@@ -20,10 +20,17 @@ $result = mysqli_query($dbc,$sql);
 <body>
 <?php include('./include/navbar.php'); ?>
 <div>
+
+<?php
+if(isset($_SESSION['role'])){
+if($_SESSION["role"] == "admin") { ?>
        <button type="button"  onClick="MyWindow=window.open('ivykioSukurimas.php','MyWindow','width=400,height=600'); return false;"class="btn btn-danger">Įvykio sukūrimas</button>
+       <?php }} ?>
+       <br><br>
         </div>
   <div class="container">
   <div class = "row">
+  
 	<?php
     while($row = mysqli_fetch_assoc($result)) 
 	{	 
@@ -48,12 +55,17 @@ $result = mysqli_query($dbc,$sql);
     <li class="list-group-item"><?php echo "data: ".$data."";?></li>
     <li class="list-group-item"><?php echo "laikas: ".$laikas."";?></li>
     <li class="list-group-item"><?php echo "tipas: ".$tipas."";?></li>
-    <li class="list-group-item"><?php echo "aprasymas: ".$aprasymas."";?></li>
+
     </ul>
-    <?php echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioredagavimas.php?ivykio_id=".$row['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Redaguoti įvykį</button>";?>
+    <?php echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioperziura.php?ivykio_id=".$row['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Peržiūrėti įvykį</button>";?>
     <br><br>
-    
-   <?php echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$row['ivykio_id']."\" class=\"btn btn-primary\" onclick =\"return confirm('Are tikrai norite ištrinti šitą įvykį?'\");>Trinti įvykį</a>";?>
+<?php
+if(isset($_SESSION['role'])){
+if($_SESSION["role"] == "admin"){
+    echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioredagavimas.php?ivykio_id=".$row['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Redaguoti įvykį</button>";
+    echo "<br><br>";
+    echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$row['ivykio_id']."\" class=\"btn btn-primary\" onclick =\"return confirm('Are tikrai norite ištrinti šitą įvykį?'\");>Trinti įvykį</a>";
+    }}?>
     
 	</div>
   </div>

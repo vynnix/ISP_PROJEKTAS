@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,7 +128,9 @@
 </head>
 <body>
 <?php include('./include/navbar.php'); 
-require_once('./include/mysql_connect.php'); ?>
+require_once('./include/mysql_connect.php');
+  $profilio_id= $_SESSION["profilio_id"];
+ ?>
     <div class="container-fixed">
       
         
@@ -154,7 +158,7 @@ require_once('./include/mysql_connect.php'); ?>
 
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 1";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 1 AND ivykiai.laikas_fk = 1";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -183,7 +187,7 @@ require_once('./include/mysql_connect.php'); ?>
                                 
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 1";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 2 AND ivykiai.laikas_fk = 1";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -213,7 +217,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 1";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 3 AND ivykiai.laikas_fk = 1";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -253,7 +257,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 1";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 4 AND ivykiai.laikas_fk = 1";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -283,7 +287,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 1";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 5 AND ivykiai.laikas_fk = 1";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -312,7 +316,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 1";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 6 AND ivykiai.laikas_fk = 1";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -351,7 +355,7 @@ require_once('./include/mysql_connect.php'); ?>
 
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 2";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 1 AND ivykiai.laikas_fk = 2";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -381,7 +385,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 2";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 2 AND ivykiai.laikas_fk = 2";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -412,7 +416,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 2";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 3 AND ivykiai.laikas_fk = 2";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -442,7 +446,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 2";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 4 AND ivykiai.laikas_fk = 2";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -472,7 +476,7 @@ require_once('./include/mysql_connect.php'); ?>
    
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 2";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 5 AND ivykiai.laikas_fk = 2";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -501,7 +505,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 2";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 6 AND ivykiai.laikas_fk = 2";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -564,7 +568,7 @@ require_once('./include/mysql_connect.php'); ?>
 
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 3";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 1 AND ivykiai.laikas_fk = 3";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -593,7 +597,7 @@ require_once('./include/mysql_connect.php'); ?>
 
 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 3";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 2 AND ivykiai.laikas_fk = 3";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -621,7 +625,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                   <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 3";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 3 AND ivykiai.laikas_fk = 3";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -649,7 +653,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 3";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 4 AND ivykiai.laikas_fk = 3";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -677,7 +681,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 3";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 5 AND ivykiai.laikas_fk = 3";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -705,7 +709,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 3";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 6 AND ivykiai.laikas_fk = 3";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -737,7 +741,7 @@ require_once('./include/mysql_connect.php'); ?>
                                 <td class="align-middle">01:00pm</td>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 4";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 1 AND ivykiai.laikas_fk = 4";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -765,7 +769,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 4";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 2 AND ivykiai.laikas_fk = 4";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -793,7 +797,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 4";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 3 AND ivykiai.laikas_fk = 4";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -821,7 +825,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 4";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 4 AND ivykiai.laikas_fk = 4";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -849,7 +853,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 4";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 5 AND ivykiai.laikas_fk = 4";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -877,7 +881,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 4";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 6 AND ivykiai.laikas_fk = 4";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -908,7 +912,7 @@ require_once('./include/mysql_connect.php'); ?>
                                 <td class="align-middle">02:00pm</td>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 5";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 1 AND ivykiai.laikas_fk = 5";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -936,7 +940,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 5";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 2 AND ivykiai.laikas_fk = 5";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -964,7 +968,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 5";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 3 AND ivykiai.laikas_fk = 5";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -992,7 +996,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 5";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 4 AND ivykiai.laikas_fk = 5";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -1020,7 +1024,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 5";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 5 AND ivykiai.laikas_fk = 5";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -1048,7 +1052,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 5";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 6 AND ivykiai.laikas_fk = 5";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -1079,7 +1083,7 @@ require_once('./include/mysql_connect.php'); ?>
                                 <td class="align-middle">03:00pm</td>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 1 and laikas_fk = 6";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 1 AND ivykiai.laikas_fk = 6";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -1107,7 +1111,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 2 and laikas_fk = 6";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 2 AND ivykiai.laikas_fk = 6";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -1135,7 +1139,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 3 and laikas_fk = 6";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 3 AND ivykiai.laikas_fk = 6";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -1163,7 +1167,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 4 and laikas_fk = 6";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 4 AND ivykiai.laikas_fk = 6";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -1191,7 +1195,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 5 and laikas_fk = 6";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 5 AND ivykiai.laikas_fk = 6";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
@@ -1219,7 +1223,7 @@ require_once('./include/mysql_connect.php'); ?>
                                     ?>
                                 <?php
                                     
-                                    $sql = "SELECT pavadinimas FROM ivykiai WHERE data_fk = 6 and laikas_fk = 6";
+                                    $sql = "SELECT ivykiai.pavadinimas as pavadinimas, ivykiai.data_fk as data, ivykiai.laikas_fk as laikas, ivykiu_registracija.ivykio_id FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE profilio_id = $profilio_id AND ivykiai.data_fk = 6 AND ivykiai.laikas_fk = 6";
                                     $result = mysqli_query($dbc, $sql);
                                     $row = mysqli_fetch_array($result);                                   
                                     
