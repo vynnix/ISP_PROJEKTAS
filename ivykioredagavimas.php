@@ -43,7 +43,7 @@
 <?php
 
 
-        $sql = "SELECT ivykiai.pavadinimas as pav, data_fk, datos.pavadinimas as data, laikas_fk, laikai.pavadinimas as laikas, tipas_fk, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id WHERE ivykio_id = 1";
+        $sql = "SELECT ivykiai.pavadinimas as pav, data_fk, datos.pavadinimas as data, laikas_fk, laikai.pavadinimas as laikas, tipas_fk, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id WHERE ivykio_id = ".$_GET['ivykio_id']."";
         $result = mysqli_query($dbc, $sql);
         $row_pav = mysqli_fetch_array($result);
         echo "<input name='pavadinimas' type='text' value = '".$row_pav['pav']."' required>";
