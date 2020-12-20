@@ -1,6 +1,6 @@
 <?php
 require_once('./include/mysql_connect.php');
-$sql = "SELECT * FROM paskyros";
+$sql = "SELECT * FROM profilis";
 $result = mysqli_query($dbc,$sql);
 
 
@@ -35,21 +35,30 @@ if(isset($_SESSION["role"])){
 	<?php
     while($row = mysqli_fetch_assoc($result)) 
 	{	 
-		$pavadinimas=$row['vartotojas']; 
+		$lytis=$row['lytis']; 
 	?>
   <div class="col-sm-4">
     <div class="card border-dark mb-3" style="max-width: 14rem; min-height: 20rem ">
     <div class= "card=header"> <?php
-			      echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";    
+			      echo "<center><h5 class=\"card-title\">$lytis</h5></center>";    
 		    ?> </div>
     <div class="card-body">
     <p class="card-text">
 		    <?php
-	      	$vartotojas=$row['vartotojas']; 	
-      		$role = $row['role'];
-				echo $vartotojas;
-				echo "<br></br>";
-				echo $role;
+	      	$vardas=$row['vardas']; 	
+		    $pavarde = $row['pavarde'];
+		    $registracijos_data=$row['registracijos_data']; 	
+		    $epastas = $row['epastas'];
+			$telefonas=$row['telefonas']; 	
+			echo $vardas;
+			echo "<br></br>";
+			echo $pavarde;
+			echo "<br></br>";
+			echo $registracijos_data;
+			echo "<br></br>";
+			echo $epastas;
+			echo "<br></br>";
+			echo $telefonas;
 		  	?>
     </p>
     <ul class="list-group list-group-flush">
@@ -59,13 +68,16 @@ if(isset($_SESSION["role"])){
 	<?php
   if(isset($_SESSION["role"])){
 	if ($_SESSION["role"] == "admin")
-	{echo "<a href=\"/ISP_/klientoprenumeratos.php?id=".$row['id']."\" class=\"btn btn-primary\">Peržiūrėti prenumeratas</a>";}}
+	{echo "<a href=\"/ISP_PROJEKTAS/klientoprenumeratos.php?id=".$row['id']."&profilio_id=".$row['id']."\" class=\"btn btn-primary\">Peržiūrėti prenumeratas</a>";}}
+	if(isset($_SESSION["role"])){
+		if ($_SESSION["role"] == "admin")
+		{echo "<a href=\"/ISP_PROJEKTAS/klientopaslaugos.php?id=".$row['id']."&profilio_id=".$row['id']."\" class=\"btn btn-primary\">Peržiūrėti paslaugas</a>";}}
     ?>
   </div>
   </div>
   </div>
 	<?php
-	}
+	}	
  ?>
 </div>	
 </div>

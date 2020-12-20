@@ -32,11 +32,7 @@ require_once('./include/mysql_connect.php');
             $results2=mysqli_query($dbc, $query2);
             if($results){
               while($row2=mysqli_fetch_array($results2)){
-                echo "<h2>".$row2['pavadinimas']." kaina ".$row2['kaina'].' € </h2>
-                <form action="veiksmai/prenumeratosNaikinimas.php?id='.$row2['id'].'" method="post">
-		 <input class="btn btn-primary" type="submit" name="Trinti" value="Atsisakyti" onclick="return confirm(`Ar tikrai norit ištrinti?`);" />
-     </form><br />
-     ';
+                echo "<h2>".$row2['pavadinimas']." kaina ".$row2['kaina'].'';
               }
             }
           }

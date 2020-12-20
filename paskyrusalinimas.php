@@ -20,15 +20,6 @@ $result = mysqli_query($dbc,$sql);
 <body>
 <?php include('./include/navbar.php'); ?>
 <div>
-<?php
-if(isset($_SESSION["role"])){
-  if ($_SESSION["role"] == "admin")
-  { ?>
-       <button type="button"  onClick="MyWindow=window.open('klientosalinimas.php','MyWindow','width=800,height=600'); return false;"class="btn btn-danger">Skelbimo sukūrimas</button>
-        </div>
-        <?php 
-  }}
-  ?>
 <div>
   <div class="container">
   <div class = "row">
@@ -60,9 +51,6 @@ if(isset($_SESSION["role"])){
   if(isset($_SESSION["role"])){
   if ($_SESSION["role"] == "admin")
   { echo "<a href=\"veiksmai/klientosalinimas.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = klientosalinimas()>Pašalinti klientą</a>";}}
-  if(isset($_SESSION["role"])){
-	if ($_SESSION["role"] == "admin")
-	{echo "<a href=\"/ISP_/klientoprenumeratos.php?id=".$row['id']."\" class=\"btn btn-primary\">Peržiūrėti prenumeratas</a>";}}
     ?>
   </div>
   </div>
