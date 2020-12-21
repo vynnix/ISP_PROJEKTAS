@@ -42,10 +42,9 @@ require_once('./include/mysql_connect.php');
     <p>Telefonas: '.$row['telefonas'].'</p>
     <a href="pasiekimai.php" type="button2" class="btn btn-primary">Pasiekimai</a>
 			<a href="profilioRedagavimas.php" type="button2" class="btn btn-primary">Redaguoti</a>
-			<a href="pagrindinis.php" type="button2" class="btn btn-primary">Atsijungti</a>
       <br /><br />
       <form action="veiksmai/paskyrosNaikinimas.php?id='.$_SESSION["profilio_id"].'" method="post">
-		 <input class="btn btn-primary" type="submit" name="Trinti" value="Trinti" onclick="return confirm(`Ar tikrai norit ištrinti?`);" />
+		 <input class="btn btn-danger" type="submit" name="Trinti" value="Trinti" onclick="return confirm(`Ar tikrai norit ištrinti?`);" />
 		 </form>
 			<br />
 			<h2>Užsakytos prenumeratos nutraukimas</h2>

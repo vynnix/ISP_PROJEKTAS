@@ -36,7 +36,7 @@ include('./include/navbar.php');
     <p>Gimimo data: '.$row['gimimo_data'].'</p>
     <p> Lytis: '.$row['lytis'].'</p>
     <p>Telefonas: <input name="telefonas" type="text" value="'.$row['telefonas'].'"/></p>
-    <p><input class="button2" type="submit" name="submit" onClick=profilioRedagavimas() value="Išsaugoti" /></p>
+    <p><input class="btn btn-primary" type="submit" name="submit" onClick=profilioRedagavimas() value="Išsaugoti" /></p>
     </form>';
     if(isset($_POST['submit'])){
 	
