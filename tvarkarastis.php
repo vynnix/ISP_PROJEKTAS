@@ -169,7 +169,7 @@ require_once('./include/mysql_connect.php');
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
                                         <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -198,7 +198,7 @@ require_once('./include/mysql_connect.php');
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
                                         <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -228,7 +228,7 @@ require_once('./include/mysql_connect.php');
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
                                         <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -268,7 +268,7 @@ require_once('./include/mysql_connect.php');
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
                                         <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -298,7 +298,7 @@ require_once('./include/mysql_connect.php');
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
                                         <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -327,7 +327,7 @@ require_once('./include/mysql_connect.php');
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
                                         <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -365,8 +365,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">10:00-11:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -395,8 +395,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">10:00-11:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -426,8 +426,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">10:00-11:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -456,8 +456,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">10:00-11:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -486,8 +486,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">10:00-11:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -515,8 +515,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">10:00-11:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -578,8 +578,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">12:00-13:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -607,8 +607,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">12:00-13:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -635,8 +635,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">12:00-13:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -663,8 +663,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">12:00-13:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -691,8 +691,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">12:00-13:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -719,8 +719,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">12:00-13:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -751,8 +751,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">13:00-14:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -779,8 +779,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">13:00-14:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -807,8 +807,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">13:00-14:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -835,8 +835,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">13:00-14:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -863,8 +863,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">13:00-14:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -891,8 +891,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">13:00-14:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -922,8 +922,7 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">14:00-15:00</div>
                                         </td>
                                         
                                  <?php   }
@@ -950,8 +949,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">14:00-15:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -978,8 +977,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">14:00-15:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1006,8 +1005,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">14:00-15:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1034,8 +1033,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">14:00-15:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1062,8 +1061,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">14:00-15:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1093,8 +1092,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">15:00-16:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1121,8 +1120,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">15:00-16:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1149,8 +1148,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">15:00-16:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1177,8 +1176,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">15:00-16:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1205,8 +1204,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">15:00-16:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }
@@ -1233,8 +1232,8 @@ require_once('./include/mysql_connect.php');
                                         <td>                                  
 
                                         <span class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"><?php echo "".$row['pavadinimas'].""; ?></span>
-                                        <div class="margin-10px-top font-size14">9:00-10:00</div>
-                                        <div class="font-size13 text-light-gray">Juozas Juozaitis</div>
+                                        <div class="margin-10px-top font-size14">15:00-16:00</div>
+                                        
                                         </td>
                                         
                                  <?php   }

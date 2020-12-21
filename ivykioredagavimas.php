@@ -22,10 +22,7 @@
 	  
 	   <div class="col-sm-6">
        <div class="w3-container w3-teal">
-			<h1>Įvykio redagavimas</h1>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button2" onclick=ivykioRedagavimoPatvirtinimas() class="btn btn-primary">Atnaujinti</button>
+			<center><h1>Įvykio redagavimas</h1></center>
 		</div>
 		<script>
         function ivykioRedagavimoPatvirtinimas() {
@@ -37,7 +34,7 @@
 	  </div>
 	  </div>
 	
-    
+    <center>
     <form method='post' action=''> 
    
 <?php
@@ -46,24 +43,27 @@
         $sql = "SELECT ivykiai.pavadinimas as pav, data_fk, datos.pavadinimas as data, laikas_fk, laikai.pavadinimas as laikas, tipas_fk, tipai.pavadinimas as tipas, vietos, aprasymas FROM ivykiai INNER JOIN datos ON data_fk = datos.data_id INNER JOIN laikai ON laikas_fk = laikai.laikas_id INNER JOIN tipai ON tipas_fk = tipai.tipas_id WHERE ivykio_id = ".$_GET['ivykio_id']."";
         $result = mysqli_query($dbc, $sql);
         $row_pav = mysqli_fetch_array($result);
-        echo "<input name='pavadinimas' type='text' value = '".$row_pav['pav']."' required>";
+        echo "<b>Pavadinimas</b><br>";
+        echo "<input class=\"form-control\" name='pavadinimas' type='text' value = '".$row_pav['pav']."' required><br>";
 
 
         $sql = "SELECT data_id, pavadinimas FROM datos";
         $result = mysqli_query($dbc,$sql);
-        echo "<select name='data_id'>";
+        echo "<b>Diena</b><br>";
+        echo "<select class=\"form-control\" name='data_id'>";
         echo "<option value=".$row_pav['data_fk']." disabled selected>".$row_pav['data']."</option>";
         while ($row = mysqli_fetch_array($result)) {
           echo "<option value='" . $row['data_id'] ."'>" . $row['pavadinimas'] ."</option>";
 
 
       }
-      echo "</select>";
+      echo "</select><br>";
 
 
       $sql = "SELECT laikas_id, pavadinimas FROM laikai";
         $result = mysqli_query($dbc,$sql);
-        echo "<select name='laikas_id'>";
+        echo "<b>Laikas</b><br>";
+        echo "<select class=\"form-control\" name='laikas_id'>";
         echo "<option value=".$row_pav['laikas_fk']." disabled selected>".$row_pav['laikas']."</option>";
         while ($row = mysqli_fetch_array($result)) {
 
@@ -71,12 +71,13 @@
 
 
       }
-      echo "</select>";
+      echo "</select><br>";
 
 
       $sql = "SELECT tipas_id, pavadinimas FROM tipai";
         $result = mysqli_query($dbc,$sql);
-        echo "<select name='tipas_id'>";
+        echo "<b>Tipas</b><br>";
+        echo "<select class=\"form-control\" name='tipas_id'>";
         echo "<option value=".$row_pav['tipas_fk']." disabled selected>".$row_pav['tipas']."</option>";
         while ($row = mysqli_fetch_array($result)) {
 
@@ -84,7 +85,7 @@
 
 
       }
-      echo "</select>";
+      echo "</select><br>";
       
       
       
@@ -92,9 +93,11 @@
 
 
 ?>
-<textarea name='aprasymas'><?php echo "".$row_pav['aprasymas'].""; ?></textarea>
-<input type='submit' name='ivykio_sukurimas' value='Patvirtinti',  onclick="return confirm('Ar tikrai norite sukurti šitą įvykį?')">
+<b>Aprašymas</b><br>
+<textarea class="form-control" name='aprasymas'><?php echo "".$row_pav['aprasymas'].""; ?></textarea><br>
+<input type='submit' class="btn btn-primary" name='ivykio_sukurimas' value='Patvirtinti',  onclick="return confirm('Ar tikrai norite redaguoti šitą įvykį?')">
 </form>
+</center>
 
 <?php
 if(isset($_POST['ivykio_sukurimas'])){

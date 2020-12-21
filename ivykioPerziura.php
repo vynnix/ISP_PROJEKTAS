@@ -116,14 +116,29 @@ if(isset($_POST['ivykio_registracija']))
 
 ?>
 
-
+<br><br>
 <form method='post' action=''> 
-<input type='submit' name='ivykio_vietos' value='Likusios vietos'>
+<input type='submit' class="btn btn-primary" name='ivykio_vietos' value='Likusios vietos'>
 </form>
+<br>
 
-<form method='post' action=''> 
-<input type='submit' name='ivykio_registracija' value='Registruotis į įvykį'>
+
+<?php
+      if(isset($_SESSION["role"])){
+      if ($_SESSION["role"] == "vartotojas")
+      {
+        ?>
+      <form method='post' action=''> 
+<input type='submit' class="btn btn-primary" name='ivykio_registracija' value='Registruotis į įvykį'>
 </form>
+      <?php }} ?>
+      <?php
+if(isset($_SESSION['role'])){
+if($_SESSION["role"] == "admin"){
+    echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioredagavimas.php?ivykio_id=".$_GET['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Redaguoti įvykį</button>";
+    echo "<br><br>";
+    echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$_GET['ivykio_id']."\" class=\"btn btn-primary\" onclick =\"return confirm('Are tikrai norite ištrinti šitą įvykį?'\");>Trinti įvykį</a>";
+    }}?>
 </center>
 
 
