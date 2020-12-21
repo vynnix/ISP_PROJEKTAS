@@ -24,7 +24,7 @@ $result = mysqli_query($dbc,$sql);
 <?php
 if(isset($_SESSION['role'])){
 if($_SESSION["role"] == "admin") { ?>
-       <button type="button"  onClick="MyWindow=window.open('ivykioSukurimas.php','MyWindow','width=400,height=600'); return false;"class="btn btn-danger">Įvykio sukūrimas</button>
+       <br><center><button type="button"  onClick="MyWindow=window.open('ivykioSukurimas.php','MyWindow','width=400,height=600'); return false;"class="btn btn-danger">Įvykio sukūrimas</button></center>
        <?php }} ?>
        <br><br>
         </div>
@@ -59,13 +59,7 @@ if($_SESSION["role"] == "admin") { ?>
     </ul>
     <?php echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioperziura.php?ivykio_id=".$row['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Peržiūrėti įvykį</button>";?>
     <br><br>
-<?php
-if(isset($_SESSION['role'])){
-if($_SESSION["role"] == "admin"){
-    echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioredagavimas.php?ivykio_id=".$row['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Redaguoti įvykį</button>";
-    echo "<br><br>";
-    echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$row['ivykio_id']."\" class=\"btn btn-primary\" onclick =\"return confirm('Are tikrai norite ištrinti šitą įvykį?'\");>Trinti įvykį</a>";
-    }}?>
+
     
 	</div>
   </div>

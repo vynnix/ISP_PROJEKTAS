@@ -19,10 +19,7 @@
 	  
 	   <div class="col-sm-6">
        <div class="w3-container w3-teal">
-			<h1>Įvykio sukūrimas</h1>
-		</div>
-		<div class="w3-container w3-red">
-			<button type="button2" onclick=ivykioSukurimoPatvirtinimas() class="btn btn-primary">Sukurti</button>
+			<center><h1>Įvykio sukūrimas</h1></center>
 		</div>
 		<script>
         function ivykioSukurimoPatvirtinimas() {
@@ -33,48 +30,51 @@
 		</div>
 	  </div>
 	  </div>
-	
+	<center>
     <form method='post' action=''> 
-    <input name='pavadinimas' type='text' required>
+    <b>Pavadinimas</b><br>
+    <input class="form-control" name='pavadinimas' type='text' required><br>
+    <b>Diena</b><br>
 <?php
 
         $sql = "SELECT data_id, pavadinimas FROM datos";
         $result = mysqli_query($dbc,$sql);
 
-        echo "<select name='data_id'>";
+        echo "<select class=\"form-control\" name='data_id'>";
         while ($row = mysqli_fetch_array($result)) {
 
           echo "<option value='" . $row['data_id'] ."'>" . $row['pavadinimas'] ."</option>";
 
 
       }
-      echo "</select>";
+      echo "</select><br>";
+      echo "<b>Laikas</b><br>";
 
 
       $sql = "SELECT laikas_id, pavadinimas FROM laikai";
         $result = mysqli_query($dbc,$sql);
 
-        echo "<select name='laikas_id'>";
+        echo "<select class=\"form-control\" name='laikas_id'>";
         while ($row = mysqli_fetch_array($result)) {
 
           echo "<option value='" . $row['laikas_id'] ."'>" . $row['pavadinimas'] ."</option>";
 
 
       }
-      echo "</select>";
-
+      echo "</select><br>";
+      echo "<b>Tipas</b><br>";
 
       $sql = "SELECT tipas_id, pavadinimas FROM tipai";
         $result = mysqli_query($dbc,$sql);
 
-        echo "<select name='tipas_id'>";
+        echo "<select class=\"form-control\" name='tipas_id'>";
         while ($row = mysqli_fetch_array($result)) {
 
           echo "<option value='" . $row['tipas_id'] ."'>" . $row['pavadinimas'] ."</option>";
 
 
       }
-      echo "</select>";
+      echo "</select><br>";
       
       
       
@@ -82,9 +82,11 @@
 
 
 ?>
-<textarea name='aprasymas'>Įvykio aprašymas...</textarea>
-<input type='submit' name='ivykio_sukurimas' value='Patvirtinti',  onclick="return confirm('Ar tikrai norite sukurti šitą įvykį?')">
+<b>Aprašymas</b><br>
+<textarea class="form-control" name='aprasymas'>Įvykio aprašymas...</textarea><br>
+<input type='submit' class="btn btn-primary" name='ivykio_sukurimas' value='Patvirtinti',  onclick="return confirm('Ar tikrai norite sukurti šitą įvykį?')">
 </form>
+</center>
 
 <?php
 if(isset($_POST['ivykio_sukurimas'])){

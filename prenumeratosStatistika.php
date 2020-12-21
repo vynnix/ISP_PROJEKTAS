@@ -36,7 +36,7 @@ require_once('./include/mysql_connect.php');
       ON prenumeratu_uzsakymai.prenumeratos_id=prenumeratos.id
        GROUP BY prenumeratos.pavadinimas,prenumeratos.kaina,prenumeratos.id";
    $results=mysqli_query($dbc,$sql);
-   echo '<h1>Prenumeratu ataskaita</h1>';
+   echo '<h1>Prenumeratų ataskaita</h1>';
    echo '<table class="table table-striped table-bordered table-hover">
     <tr>
       <th scope="col">Pavadinimas</th>
@@ -58,14 +58,14 @@ require_once('./include/mysql_connect.php');
             SET prenumeratos.Busena = 1 
             WHERE prenumeratos.id = " . $row['prenumeratos_id'];
             mysqli_query($dbc,$sql3);
-            echo("DONE");
+        
             }
             if(intval($row['count(*)']) != intval($belekoksmaxas)){
                 $sql3="UPDATE prenumeratos
                 SET prenumeratos.Busena = 0 
                 WHERE prenumeratos.id = " . $row['prenumeratos_id'];
                 mysqli_query($dbc,$sql3);
-                echo("DONE");
+                
                 }
             
         }

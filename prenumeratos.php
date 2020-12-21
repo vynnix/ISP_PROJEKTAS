@@ -52,7 +52,7 @@ if(isset($_SESSION["role"])){
     <div class= "card=header"> <?php
             echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";  
             if($busena == 1){
-              echo "<center><h4 class=\"card-title\">POPULAR</h5></center>";
+              echo "<center><span class=\"badge badge-success\">POPULAR</span></center>";
             }  
 		    ?> </div>
     <div class="card-body">
