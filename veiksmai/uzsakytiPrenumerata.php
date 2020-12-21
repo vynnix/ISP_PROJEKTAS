@@ -12,4 +12,10 @@ $response = @mysqli_query($dbc, $query);
 if($response){
 	header("Location: ../prenumeratos.php");
 }
+else{
+	echo "<script>
+          alert('Susikurkite paskyra');
+	</script>";
+	echo("<script>window.location = '../prenumeratos.php';</script>");
+}
 ?>

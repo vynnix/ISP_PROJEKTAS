@@ -31,9 +31,15 @@
       <li class="nav-item">
         <a class="nav-link" href="ivykiai.php">Ivykiai</a>
       </li>
+      <?php
+      if(isset($_SESSION["role"])){
+      if ($_SESSION["role"] == "vartotojas")
+      {
+        ?>
       <li class="nav-item">
         <a class="nav-link" href="tvarkarastis.php">Tvarkaraštis</a>
       </li>
+      <?php }} ?>
       <?php
       if(isset($_SESSION["role"])){
       if ($_SESSION["role"] == "vartotojas")

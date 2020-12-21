@@ -39,9 +39,9 @@ $row=mysqli_fetch_assoc($results);
 		<div class="w3-container w3-red">
     <form method ='post'>
     <label for="Pavadinimas"> Pavadinimas</label><br>
-		<input name = "pavadinimas" type="text" value="<?php echo $row['pavadinimas'];?>" /><br><br>
+		<input name = "pavadinimas" type="text" value="<?php echo $row['pavadinimas'];?>" required/><br><br>
     <label for="Kaina"> Kaina</label><br>
-    <input name = "kaina" type="number" min = "0" value="<?php echo $row['kaina'];?>" /><br><br>
+    <input name = "kaina" type="number" min = "0" value="<?php echo $row['kaina'];?> " required/><br><br>
     <label for="aprasymas"> Aprasymas</label><br>
     <textarea class="form-control" rows="4" name='aprasymas' id="aprasymas" ><?php echo $row['aprasymas'];?> </textarea>
 			<button type="submit" name='submit'onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Atnaujinti</button>
