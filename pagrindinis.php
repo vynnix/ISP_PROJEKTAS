@@ -24,7 +24,11 @@ $result = mysqli_query($dbc,$sql);
       <div class="jumbotron text-center">
         <h1>Sporto sale</h1>
         <p class="lead">Sveiki atvyke</p>
-        <p><a class="btn btn-large btn-success" href="registracija.php" target="ext">Registracija</a></p>
+        <?php
+        if(!isset($_SESSION["role"])){
+          echo "<p><a class=\"btn btn-large btn-success\" href=\"registracija.php\" target=\"ext\">Registracija</a></p>";
+        }
+        ?>
       </div>
   </div> <!-- /container -->
 
