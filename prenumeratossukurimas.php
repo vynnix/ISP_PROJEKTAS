@@ -30,11 +30,11 @@
       <form method='post'>
         <div class = "form-group">
         <label for="pavadinimas">Pavadinimas</label>
-        <input type="text" class="form-control" name='pavadinimas' id="pavadinimas" placeholder="Pavadinimas"> 
+        <input type="text" class="form-control" name='pavadinimas' id="pavadinimas" placeholder="Pavadinimas" required> 
         </div>
         <div class = "form-group">
         <label for="kaina">Kaina</label>
-        <input type="number" class="form-control" name='kaina' id="kaina" placeholder="Kaina" min = 0> 
+        <input type="number" class="form-control" name='kaina' id="kaina" placeholder="Kaina" min = 0 required> 
         </div>
         <div class = "form-group">
         <label for="aprasymas">Aprasymas</label>

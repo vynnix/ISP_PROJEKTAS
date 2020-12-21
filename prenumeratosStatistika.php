@@ -58,14 +58,14 @@ require_once('./include/mysql_connect.php');
             SET prenumeratos.Busena = 1 
             WHERE prenumeratos.id = " . $row['prenumeratos_id'];
             mysqli_query($dbc,$sql3);
-            echo("DONE");
+        
             }
             if(intval($row['count(*)']) != intval($belekoksmaxas)){
                 $sql3="UPDATE prenumeratos
                 SET prenumeratos.Busena = 0 
                 WHERE prenumeratos.id = " . $row['prenumeratos_id'];
                 mysqli_query($dbc,$sql3);
-                echo("DONE");
+                
                 }
             
         }
