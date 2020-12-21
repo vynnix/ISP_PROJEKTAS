@@ -10,7 +10,10 @@ $vartotojo_id= $_SESSION["profilio_id"];
 $query = "INSERT INTO prenumeratu_uzsakymai (id, prenumeratos_id, profilio_id) VALUES (NULL, $prenumeratos_id, $vartotojo_id)";
 $response = @mysqli_query($dbc, $query);
 if($response){
-	header("Location: ../prenumeratos.php");
+	echo "<script>
+          alert('Prenumerata užsakyta!');
+    </script>";
+echo("<script>window.location = '../prenumeratos.php';</script>");
 }
 else{
 	echo "<script>
