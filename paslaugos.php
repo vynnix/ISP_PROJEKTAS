@@ -103,7 +103,7 @@ $sql =  "SELECT * FROM paslaugos";
 			if(isset($_SESSION["role"])){
 				if ($_SESSION["role"] == "vartotojas")
 				{
-					if($count>1)
+					if($count>=1)
 			{
 				echo "</br>";
 				echo "Sena kaina: ". $oldkaina."<td></td>";

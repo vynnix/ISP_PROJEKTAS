@@ -41,7 +41,7 @@ $row=mysqli_fetch_assoc($results);
     <label for="Pavadinimas"> Pavadinimas</label><br>
 		<input name = "pavadinimas" type="text" value="<?php echo $row['pavadinimas'];?>" required/><br><br>
     <label for="Kaina"> Kaina</label><br>
-    <input name = "kaina" type="number" min = "0" value="<?php echo $row['kaina'];?> " required/><br><br>
+    <input name = "kaina" type="number" min = "0" value="<?php echo $row['kaina'];?>"/><br><br>
     <label for="aprasymas"> Aprasymas</label><br>
     <textarea class="form-control" rows="4" name='aprasymas' id="aprasymas" ><?php echo $row['aprasymas'];?> </textarea>
 			<button type="submit" name='submit'onclick=uzsakymoPatvirtinimas() class="btn btn-primary">Atnaujinti</button>
