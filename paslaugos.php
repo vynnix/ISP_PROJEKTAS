@@ -31,7 +31,7 @@ if(isset($_SESSION["role"])){
 
 
 if(isset($_SESSION["role"])){
-	if ($_SESSION["role"] == "admin")
+	if ($_SESSION["role"] == "vartotojas")
 	{
 		$sqlcount = "SELECT count(*)
 		FROM paslaugu_uzsakymai
