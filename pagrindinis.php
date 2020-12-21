@@ -27,17 +27,11 @@ $result = mysqli_query($dbc,$sql);
         <p><a class="btn btn-large btn-success" href="registracija.php" target="ext">Registracija</a></p>
       </div>
   </div> <!-- /container -->
-
-  
-<!DOCTYPE html>
-<html>
-<head>
 <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>GYM</title>
 </head>
 <body>
@@ -51,27 +45,22 @@ if(isset($_SESSION["role"])){
         <?php 
   }}
   ?>
-  <div class="container">
-  <div class = "row">
+<div class="row">
 	<?php
     while($row = mysqli_fetch_assoc($result)) 
 	{	 
 		$pavadinimas=$row['pavadinimas']; 
 	?>
-  <div class="col-sm-4">
-    <div class="card border-dark mb-3" style="max-width: 14rem; min-height: 20rem ">
-    <div class= "card=header"> <?php
-			      echo "<center><h5 class=\"card-title\">$pavadinimas</h5></center>";    
-		    ?> </div>
-    <div class="card-body">
-    <p class="card-text">
+  <div class="col-sm-9">
+  <?php
+  echo "<h2 class=\"card-title\">$pavadinimas</h2></center>";    
+  ?>
+     <div class="col-sm-9">
 		    <?php
-	      	$pavadinimas=$row['pavadinimas']; 	
       		$data = $row['data'];
       		$turinys = $row['turinys'];
-				echo $data;
-				echo "<br></br>";
-				echo $turinys;
+        echo "<h5><span class=\"glyphicon glyphicon-time\"> Publikavimo data $data</span></h5>";
+        echo "<p>$turinys</p>";
 		  	?>
     </p>
     <ul class="list-group list-group-flush">
@@ -79,7 +68,7 @@ if(isset($_SESSION["role"])){
 
     <?php if(isset($_SESSION["role"])){
   if ($_SESSION["role"] == "admin")
-  { echo "<a href=\"veiksmai/skelbimotrynimas.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = skelbimoTrinimas()>Trinti prenumerata</a>";}}
+  { echo "<a href=\"veiksmai/skelbimotrynimas.php?id=".$row['id']."\" class=\"btn btn-primary\" onclick = skelbimoTrinimas()>Trinti skelbimą</a>";}}
 
   if(isset($_SESSION["role"])){
     if ($_SESSION["role"] == "admin"){

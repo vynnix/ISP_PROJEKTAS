@@ -25,7 +25,7 @@ $row=mysqli_fetch_assoc($results);
       
       <div class="navbar navbar-default">
         <div class="container">
-          <a class="navbar-brand" href="#">BELEKOKS GYMAS</a>
+          <a class="navbar-brand" href="pagrindinis.php">BELEKOKS GYMAS</a>
         </div>
       </div>
 
