@@ -29,9 +29,15 @@ if(isset($_SESSION["role"])){
 	}
 }
 
-$sqlcount = "SELECT count(*)
-FROM paslaugu_uzsakymai
-WHERE profilio_id = ".$_SESSION["profilio_id"];
+
+if(isset($_SESSION["role"])){
+	if ($_SESSION["role"] == "admin")
+	{
+		$sqlcount = "SELECT count(*)
+		FROM paslaugu_uzsakymai
+		WHERE profilio_id = ".$_SESSION["profilio_id"];
+	}
+}
 
 if(isset($_SESSION["role"])){
 	if ($_SESSION["role"] == "vartotojas")
