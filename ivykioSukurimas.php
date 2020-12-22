@@ -100,6 +100,7 @@ if(isset($_POST['ivykio_sukurimas'])){
   $sql = "INSERT INTO ivykiai (pavadinimas, data_fk, laikas_fk, tipas_fk, aprasymas) VALUES ('$pavadinimas', $data_fk, $laikas_fk, $tipas_fk, '$aprasymas')";
   mysqli_query($dbc,$sql);
   echo "<script>alert('Įvykis sėkmingai sukurtas!')</script>";
+  echo("<script>window.opener.location.reload(); </script>");
 
 }
 

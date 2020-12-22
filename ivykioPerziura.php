@@ -90,7 +90,6 @@ if(isset($_POST['ivykio_registracija']))
 
 
       $sql = "SELECT ivykiu_registracija.ivykio_id as ivykis, ivykiai.laikas_fk as laikas, ivykiai.data_fk as data FROM `ivykiu_registracija` INNER JOIN ivykiai ON ivykiu_registracija.ivykio_id = ivykiai.ivykio_id WHERE ivykiai.laikas_fk = $laikas AND ivykiai.data_fk = $data AND profilio_id = $profilio_id";
-      var_dump($sql);
       $result = mysqli_query($dbc,$sql);
       $row4 = mysqli_fetch_array($result);
 
@@ -100,8 +99,8 @@ if(isset($_POST['ivykio_registracija']))
       }
       else {
         $sql = "INSERT INTO ivykiu_registracija (ivykio_id, profilio_id) VALUES ($ivykio_id, $profilio_id)";
-        var_dump($sql);
         mysqli_query($dbc,$sql);
+        echo "<script>alert('Įvykio registracija buvo sėkminga!')</script>";
       }
 
   
@@ -118,7 +117,7 @@ if(isset($_POST['ivykio_registracija']))
 
 <br><br>
 <form method='post' action=''> 
-<input type='submit' class="btn btn-primary" name='ivykio_vietos' value='Likusios vietos'>
+<input type='submit' class="btn btn-primary" name='ivykio_vietos' value='Likusios vietos' >
 </form>
 <br>
 
@@ -129,7 +128,7 @@ if(isset($_POST['ivykio_registracija']))
       {
         ?>
       <form method='post' action=''> 
-<input type='submit' class="btn btn-primary" name='ivykio_registracija' value='Registruotis į įvykį'>
+<input type='submit' class="btn btn-primary" name='ivykio_registracija' value='Registruotis į įvykį' onclick ="return confirm('Are tikrai norite registruotis į šitą įvykį?');">
 </form>
       <?php }} ?>
       <?php
@@ -137,7 +136,7 @@ if(isset($_SESSION['role'])){
 if($_SESSION["role"] == "admin"){
     echo "<button type=\"button\" class=\"btn btn-primary\" onclick = \"MyWindow=window.open('ivykioredagavimas.php?ivykio_id=".$_GET['ivykio_id']."','MyWindow','width=400,height=600'); return false;\">Redaguoti įvykį</button>";
     echo "<br><br>";
-    echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$_GET['ivykio_id']."\" class=\"btn btn-primary\" onclick =\"return confirm('Are tikrai norite ištrinti šitą įvykį?'\");>Trinti įvykį</a>";
+    echo "<a href=\"veiksmai/ivykiotrynimas.php?ivykio_id=".$_GET['ivykio_id']."\" class=\"btn btn-primary\" onclick =\"return confirm('Are tikrai norite ištrinti šitą įvykį?');\">Trinti įvykį</a>";
     }}?>
 </center>
 

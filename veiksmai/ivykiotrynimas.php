@@ -9,5 +9,8 @@ $sql = "DELETE FROM ivykiai WHERE ivykio_id = $id";
 
 mysqli_query($dbc,$sql);
 
-header("Location: ../ivykiai.php");
+echo "<script>
+          alert('Įvykis ištrintas');
+    </script>";
+echo("<script>window.close();</script>");
 ?>
